@@ -1,0 +1,56 @@
+{
+	"10000": {
+        "Name": "Gold Coin",
+        "Category": "Valuables",
+        "Type": "Money",
+		"Value": 1
+    },
+    "10001": {
+        "Name": "Blacksteel Sword",
+        "Category": "Melee Weapon",
+        "Type": "Sword",
+        "EquipmentSlot": null,
+        "Attack": 20,
+        "Defense": null,
+        "Block": null,
+        "PotionHealth": null,
+        "PotionMana": null,
+        "FoodSatiation": null
+    },
+    "10002": {
+        "Name": "Swan Blade",
+        "Category": "Melee Weapon",
+        "Type": "Sword",
+        "EquipmentSlot": null,
+        "Attack": 60,
+        "Defense": null,
+        "Block": null,
+        "PotionHealth": null,
+        "PotionMana": null,
+        "FoodSatiation": null
+    },
+    "10003": {
+        "Name": "Leather Pants",
+        "Category": "Legs",
+        "Type": "Armor",
+        "EquipmentSlot": "Legs",
+        "Attack": null,
+        "Defense": 1,
+        "Block": null,
+        "PotionHealth": null,
+        "PotionMana": null,
+        "FoodSatiation": null
+    },
+    "10004": {
+        "Name": "Small Health Potion",
+        "Category": "Consumables",
+        "Type": "Potion",
+        "EquipmentSlot": null,
+        "Attack": null,
+        "Defense": null,
+        "Block": null,
+        "PotionHealth": 25,
+        "PotionMana": null,
+        "FoodSatiation": null
+    }
+}

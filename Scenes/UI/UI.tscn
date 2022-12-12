@@ -1,0 +1,552 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://Resources/MenuPixelFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Resources/UpHeavt.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Assets/Fonts/editundo.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Scenes/UI/Inventory.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/EquipmentSlot.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/UI/UI.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Ui/EquipmentItems/Feets.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Ui/mana_fill.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Ui/mana_empty.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Ui/menu_button_press.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Ui/button_hover.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Ui/ui_frame.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Ui/menu_button.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Ui/button.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Ui/health_empty.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Ui/health_fill.png" type="Texture" id=16]
+[ext_resource path="res://Scenes/UI/CharacterSheet.gd" type="Script" id=17]
+[ext_resource path="res://Scenes/UI/Toolbar.gd" type="Script" id=18]
+[ext_resource path="res://Assets/Ui/EquipmentItems/Legs.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Ui/ui_frame_transparent.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Ui/EquipmentItems/Neck.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Ui/EquipmentItems/Chest.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Ui/EquipmentItems/ring.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Ui/EquipmentItems/Accessory.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Ui/EquipmentItems/Head.png" type="Texture" id=25]
+
+[sub_resource type="Gradient" id=9]
+colors = PoolColorArray( 0, 0, 0, 0.117647, 0, 0, 0, 0.113725 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 9 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 21
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 27
+use_filter = true
+font_data = ExtResource( 3 )
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource( 6 )
+
+[node name="GUI" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="TopBar" type="Control" parent="."]
+anchor_right = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 0, 30 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TopBar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="HealthBar" type="TextureProgress" parent="TopBar/HBoxContainer"]
+margin_right = 375.0
+margin_bottom = 30.0
+hint_tooltip = "Player Health"
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 60.0
+texture_under = ExtResource( 15 )
+texture_progress = ExtResource( 16 )
+nine_patch_stretch = true
+
+[node name="Tween" type="Tween" parent="TopBar/HBoxContainer/HealthBar"]
+
+[node name="Center" type="Control" parent="TopBar/HBoxContainer"]
+margin_left = 379.0
+margin_right = 891.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 512, 0 )
+
+[node name="ManaBar" type="TextureProgress" parent="TopBar/HBoxContainer"]
+margin_left = 895.0
+margin_right = 1270.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 60.0
+texture_under = ExtResource( 9 )
+texture_progress = ExtResource( 8 )
+fill_mode = 1
+nine_patch_stretch = true
+
+[node name="Tween" type="Tween" parent="TopBar/HBoxContainer/ManaBar"]
+
+[node name="Character" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CharacterSheet" type="Control" parent="Character"]
+visible = false
+anchor_bottom = 1.0
+margin_right = 81.0
+script = ExtResource( 17 )
+
+[node name="M" type="MarginContainer" parent="Character/CharacterSheet"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -720.0
+margin_right = 80.0
+rect_min_size = Vector2( 64, 0 )
+custom_constants/margin_right = 8
+custom_constants/margin_top = 30
+custom_constants/margin_left = 8
+custom_constants/margin_bottom = 30
+
+[node name="LeftEquip" type="VBoxContainer" parent="Character/CharacterSheet/M"]
+margin_left = 8.0
+margin_top = 30.0
+margin_right = 72.0
+margin_bottom = 690.0
+rect_min_size = Vector2( 64, 0 )
+custom_constants/separation = 1
+alignment = 1
+
+[node name="Head" type="TextureRect" parent="Character/CharacterSheet/M/LeftEquip"]
+margin_top = 70.0
+margin_right = 64.0
+margin_bottom = 134.0
+rect_min_size = Vector2( 64, 64 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 20 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="Character/CharacterSheet/M/LeftEquip/Head"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 25 )
+stretch_mode = 5
+script = ExtResource( 5 )
+
+[node name="Neck" type="TextureRect" parent="Character/CharacterSheet/M/LeftEquip"]
+margin_top = 135.0
+margin_right = 64.0
+margin_bottom = 199.0
+rect_min_size = Vector2( 64, 64 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 20 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="Character/CharacterSheet/M/LeftEquip/Neck"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 21 )
+stretch_mode = 5
+script = ExtResource( 5 )
+
+[node name="Chest" type="TextureRect" parent="Character/CharacterSheet/M/LeftEquip"]
+margin_top = 200.0
+margin_right = 64.0
+margin_bottom = 264.0
+rect_min_size = Vector2( 64, 64 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 20 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="Character/CharacterSheet/M/LeftEquip/Chest"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 22 )
+stretch_mode = 5
+script = ExtResource( 5 )
+
+[node name="Legs" type="TextureRect" parent="Character/CharacterSheet/M/LeftEquip"]
+margin_top = 265.0
+margin_right = 64.0
+margin_bottom = 329.0
+rect_min_size = Vector2( 64, 64 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 20 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="Character/CharacterSheet/M/LeftEquip/Legs"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 19 )
+stretch_mode = 5
+script = ExtResource( 5 )
+
+[node name="Feets" type="TextureRect" parent="Character/CharacterSheet/M/LeftEquip"]
+margin_top = 330.0
+margin_right = 64.0
+margin_bottom = 394.0
+rect_min_size = Vector2( 64, 64 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 20 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="Character/CharacterSheet/M/LeftEquip/Feets"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 7 )
+stretch_mode = 5
+script = ExtResource( 5 )
+
+[node name="Finger1" type="TextureRect" parent="Character/CharacterSheet/M/LeftEquip"]
+margin_top = 395.0
+margin_right = 64.0
+margin_bottom = 459.0
+rect_min_size = Vector2( 64, 64 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 20 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="Character/CharacterSheet/M/LeftEquip/Finger1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 23 )
+stretch_mode = 5
+script = ExtResource( 5 )
+
+[node name="Finger2" type="TextureRect" parent="Character/CharacterSheet/M/LeftEquip"]
+margin_top = 460.0
+margin_right = 64.0
+margin_bottom = 524.0
+rect_min_size = Vector2( 64, 64 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 20 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="Character/CharacterSheet/M/LeftEquip/Finger2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 23 )
+stretch_mode = 5
+script = ExtResource( 5 )
+
+[node name="Accessory" type="TextureRect" parent="Character/CharacterSheet/M/LeftEquip"]
+margin_top = 525.0
+margin_right = 64.0
+margin_bottom = 589.0
+rect_min_size = Vector2( 64, 64 )
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource( 20 )
+expand = true
+
+[node name="Icon" type="TextureRect" parent="Character/CharacterSheet/M/LeftEquip/Accessory"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 24 )
+stretch_mode = 5
+script = ExtResource( 5 )
+
+[node name="Toolbar" type="Control" parent="Character"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 0, 74 )
+script = ExtResource( 18 )
+
+[node name="SlotsContainer" type="HBoxContainer" parent="Character/Toolbar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 64, 0 )
+custom_constants/separation = 1
+alignment = 1
+
+[node name="Inventory" type="Control" parent="Character"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -160.0
+margin_top = -125.0
+margin_right = 160.0
+margin_bottom = 235.0
+script = ExtResource( 4 )
+
+[node name="Background" type="NinePatchRect" parent="Character/Inventory"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 12 )
+
+[node name="M" type="MarginContainer" parent="Character/Inventory/Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 18
+custom_constants/margin_top = 18
+custom_constants/margin_left = 18
+custom_constants/margin_bottom = 12
+
+[node name="V" type="VBoxContainer" parent="Character/Inventory/Background/M"]
+margin_left = 18.0
+margin_top = 18.0
+margin_right = 302.0
+margin_bottom = 348.0
+
+[node name="Header" type="HBoxContainer" parent="Character/Inventory/Background/M/V"]
+margin_right = 284.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+
+[node name="Control" type="Control" parent="Character/Inventory/Background/M/V/Header"]
+margin_right = 78.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="Character/Inventory/Background/M/V/Header"]
+margin_left = 82.0
+margin_right = 202.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 120, 0 )
+size_flags_horizontal = 3
+texture = SubResource( 2 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="Character/Inventory/Background/M/V/Header/TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 2.0
+margin_right = 2.0
+custom_fonts/font = SubResource( 10 )
+text = "Inventory"
+align = 1
+valign = 1
+
+[node name="Exit" type="Control" parent="Character/Inventory/Background/M/V/Header"]
+margin_left = 206.0
+margin_right = 284.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+
+[node name="CloseInventory" type="TextureButton" parent="Character/Inventory/Background/M/V/Header/Exit"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -40.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+texture_normal = ExtResource( 14 )
+texture_hover = ExtResource( 11 )
+expand = true
+
+[node name="Label" type="Label" parent="Character/Inventory/Background/M/V/Header/Exit/CloseInventory"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -18.0
+margin_top = -18.0
+margin_right = 18.0
+margin_bottom = 18.0
+custom_colors/font_color = Color( 0.439216, 0.423529, 0.643137, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "X"
+align = 1
+valign = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Character/Inventory/Background/M/V"]
+margin_top = 44.0
+margin_right = 284.0
+margin_bottom = 330.0
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="Character/Inventory/Background/M/V/ScrollContainer"]
+margin_right = 284.0
+margin_bottom = 286.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/vseparation = 4
+custom_constants/hseparation = 4
+columns = 4
+
+[node name="GameMenu" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 200, 300 )
+
+[node name="Background" type="TextureRect" parent="GameMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -130.0
+margin_top = -160.0
+margin_right = 130.0
+margin_bottom = 160.0
+texture = ExtResource( 12 )
+expand = true
+
+[node name="MarginContainer" type="MarginContainer" parent="GameMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -127.0
+margin_right = 100.0
+margin_bottom = 127.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameMenu/MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 190.0
+margin_bottom = 244.0
+custom_constants/separation = 10
+
+[node name="Label" type="Label" parent="GameMenu/MarginContainer/VBoxContainer"]
+margin_right = 180.0
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 11 )
+text = "Game Menu"
+align = 1
+
+[node name="Resume" type="TextureButton" parent="GameMenu/MarginContainer/VBoxContainer"]
+margin_top = 34.0
+margin_right = 180.0
+margin_bottom = 66.0
+rect_min_size = Vector2( 0, 32 )
+size_flags_horizontal = 5
+texture_normal = ExtResource( 13 )
+texture_hover = ExtResource( 10 )
+expand = true
+
+[node name="Label" type="Label" parent="GameMenu/MarginContainer/VBoxContainer/Resume"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.215686, 0.215686, 0.215686, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "RESUME"
+align = 1
+valign = 1
+
+[node name="Save" type="TextureButton" parent="GameMenu/MarginContainer/VBoxContainer"]
+margin_top = 76.0
+margin_right = 180.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 0, 32 )
+size_flags_horizontal = 5
+texture_normal = ExtResource( 13 )
+texture_hover = ExtResource( 10 )
+expand = true
+
+[node name="Label" type="Label" parent="GameMenu/MarginContainer/VBoxContainer/Save"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.215686, 0.215686, 0.215686, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Save"
+align = 1
+valign = 1
+
+[node name="Restart" type="TextureButton" parent="GameMenu/MarginContainer/VBoxContainer"]
+margin_top = 118.0
+margin_right = 180.0
+margin_bottom = 150.0
+rect_min_size = Vector2( 0, 32 )
+size_flags_horizontal = 5
+texture_normal = ExtResource( 13 )
+texture_hover = ExtResource( 10 )
+expand = true
+
+[node name="Label" type="Label" parent="GameMenu/MarginContainer/VBoxContainer/Restart"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.215686, 0.215686, 0.215686, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Restart"
+align = 1
+valign = 1
+
+[node name="Options" type="TextureButton" parent="GameMenu/MarginContainer/VBoxContainer"]
+margin_top = 160.0
+margin_right = 180.0
+margin_bottom = 192.0
+rect_min_size = Vector2( 0, 32 )
+size_flags_horizontal = 5
+texture_normal = ExtResource( 13 )
+texture_hover = ExtResource( 10 )
+expand = true
+
+[node name="Label" type="Label" parent="GameMenu/MarginContainer/VBoxContainer/Options"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.215686, 0.215686, 0.215686, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Options"
+align = 1
+valign = 1
+
+[node name="Exit" type="TextureButton" parent="GameMenu/MarginContainer/VBoxContainer"]
+margin_top = 202.0
+margin_right = 180.0
+margin_bottom = 234.0
+rect_min_size = Vector2( 0, 32 )
+size_flags_horizontal = 5
+texture_normal = ExtResource( 13 )
+texture_hover = ExtResource( 10 )
+expand = true
+
+[node name="Label" type="Label" parent="GameMenu/MarginContainer/VBoxContainer/Exit"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.215686, 0.215686, 0.215686, 1 )
+custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Exit"
+align = 1
+valign = 1
+
+[node name="OptionsMenu" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="OptionsMenu"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="OptionsMenu"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsMenu/HBoxContainer"]
+margin_bottom = 40.0
+
+[connection signal="pressed" from="Character/Inventory/Background/M/V/Header/Exit/CloseInventory" to="." method="_on_CloseInventory_pressed"]
+[connection signal="pressed" from="GameMenu/MarginContainer/VBoxContainer/Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="GameMenu/MarginContainer/VBoxContainer/Save" to="." method="_on_Save_pressed"]
+[connection signal="pressed" from="GameMenu/MarginContainer/VBoxContainer/Options" to="." method="_on_Options_pressed"]
