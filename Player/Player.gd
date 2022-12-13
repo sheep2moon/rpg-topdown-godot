@@ -1,6 +1,5 @@
 extends KinematicBody2D
 
-signal on_item_picked_up(item_id)
 
 var mov_direction := Vector2.ZERO
 var _velocity: Vector2 = Vector2.ZERO
@@ -16,6 +15,8 @@ var current_hp
 var accerelation = 100
 var max_speed = 120
 var hp_regen = 2
+var level = 1
+var player_xp = 0
 
 func _ready():
 	current_hp = hp
@@ -56,19 +57,21 @@ func regen_hp(delta):
 	if current_hp < hp:
 		current_hp += hp_regen * delta
 
-func pick_up_item(id):
-	print("Player - pick up item ID:",id)
-	emit_signal("on_item_picked_up",id)
-
 func attack():
 	main_hand.make_action(get_angle_to(get_global_mouse_position()))
 
 func on_kill(expierience):
-	print(expierience)
 	var exp_label: Position2D = EXP_LABEL.instance()
 	exp_label.amount = expierience
 	exp_label.type = "Expierience"
 	add_child(exp_label)
+	player_xp += expierience
+	if player_xp >= get_next_level_xp(level):
+		level += 1
+	
+
+func get_next_level_xp(level):
+	return 128 * pow(level,2)
 
 
 

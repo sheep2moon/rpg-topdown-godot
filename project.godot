@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/Hurtbox.gd"
 }, {
+"base": "Control",
+"class": "InvenoryHandler",
+"language": "GDScript",
+"path": "res://Scripts/InventoryHandler.gd"
+}, {
 "base": "Node2D",
 "class": "MainHand",
 "language": "GDScript",
@@ -49,6 +54,7 @@ _global_script_class_icons={
 "EnemySM": "",
 "Hitbox": "",
 "Hurtbox": "",
+"InvenoryHandler": "",
 "MainHand": "",
 "MainHandFist": "",
 "StateMachine": ""

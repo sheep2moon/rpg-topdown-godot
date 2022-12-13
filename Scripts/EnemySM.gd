@@ -52,6 +52,7 @@ func _enter_state(new_state,old_state):
 			parent._animations.play("Dead")
 			$"../Collision".set_deferred("disabled",true)
 			$"../Hurtbox/HurtShape".set_deferred("disabled",true)
+			$"../Hitbox/CollisionShape2D".set_deferred("disabled",true)
 			$"../Sprite".z_index = -3
 			yield(get_tree().create_timer(60.0),"timeout")
 			parent.queue_free()

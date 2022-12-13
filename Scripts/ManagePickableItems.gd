@@ -8,8 +8,13 @@ func _ready():
 
 func on_drop_items(position,item_id,quantity):
 	var item_texture = GameData.get_icon_path_by_item_id(item_id)
-	
-	for i in range(quantity):
+	if quantity < 4:
+		for i in range(quantity):
+			var item_instance = pickable_item_scene.instance()
+			item_instance.init(item_id,item_texture,position,1)
+			call_deferred("add_child",item_instance)
+	else:
 		var item_instance = pickable_item_scene.instance()
-		item_instance.init(item_id,item_texture,position)
-		add_child(item_instance)
+		item_instance.init(item_id,item_texture,position,quantity)
+		call_deferred("add_child",item_instance)
+		#add_child(item_instance)

@@ -101,24 +101,12 @@ tracks/4/keys = {
 "values": [ true, false, true ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Hinge/Sprite:position")
+tracks/5/path = NodePath(".:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 13, -11 ) ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath(".:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
 "times": PoolRealArray( 0, 0.8 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
@@ -126,7 +114,7 @@ tracks/6/keys = {
 }
 
 [node name="Melee_Weapon" type="Node2D"]
-visible = false
+position = Vector2( 0, -15 )
 script = ExtResource( 2 )
 
 [node name="Hinge" type="Node2D" parent="."]
@@ -140,6 +128,7 @@ texture = ExtResource( 4 )
 flip_h = true
 
 [node name="Hitbox" type="Area2D" parent="Hinge/Sprite"]
+position = Vector2( 1.11778, 1.15603 )
 collision_layer = 8
 collision_mask = 0
 script = ExtResource( 3 )
@@ -148,6 +137,7 @@ knockback_power = 1000
 knockback_direction = Vector2( 2, 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hinge/Sprite/Hitbox"]
+position = Vector2( -1.26651, 1.90779 )
 rotation = 0.785397
 shape = SubResource( 3 )
 disabled = true
@@ -163,5 +153,3 @@ scale = Vector2( 1, 1.4 )
 texture = ExtResource( 1 )
 hframes = 3
 frame = 2
-
-[connection signal="area_entered" from="Hinge/Sprite/Hitbox" to="Hinge/Sprite/Hitbox" method="_on_Hitbox_area_entered"]

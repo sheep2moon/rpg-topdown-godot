@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-onready var player = $"../Navigation2D/YSort/Player"
+onready var player: KinematicBody2D = $"../Navigation2D/YSort/Player"
 onready var player_main_hand = $"../Navigation2D/YSort/Player/MainHand"
 
 
@@ -18,7 +18,7 @@ onready var mana_bar_tween = $TopBar/HBoxContainer/ManaBar/Tween
 func _ready():
 	health_bar.max_value = player.hp
 	pause_mode = Node.PAUSE_MODE_PROCESS
-	Toolbar.connect("tool_changed",self,"set_selected_item")
+	SignalBus.connect("on_player_enter_pickup_item",self,"_on_player_enter_pickup_item")
 	#health_bar.value = player.current_hp
 
 func _input(event):
@@ -55,12 +55,29 @@ func _on_CloseInventory_pressed():
 func _on_Save_pressed():
 	PlayerData.save()
 
-func _on_Player_on_item_picked_up(item_id):
-	var slot_name = PlayerData.add_to_inventory(item_id)
+func _on_player_enter_pickup_item(item_id,quantity,item_node):
+	var slot_name = PlayerData.add_to_inventory(item_id,quantity)
 	if slot_name:
-		var slot_index = int(slot_name.lstrip("Inv"))
-		if slot_index < 9:
-			Toolbar.update_inventory_slot(slot_name)
-		else:
-			Inventory.update_inventory_slot(slot_name)
+		var item_tween: Tween = item_node.get_node("Tween")
+		item_tween.follow_property(item_node,"global_position",item_node.global_position,player,"global_position",0.5,Tween.TRANS_BACK,Tween.EASE_IN_OUT)
+		#item_tween.interpolate_property(item_node,"global_position",item_node.global_position,player.global_position,2.0,Tween.TRANS_BACK,Tween.EASE_IN_OUT)
+		item_tween.start()
+		item_tween.connect("tween_all_completed",self,"_add_to_inventory",[item_id,quantity,item_node,slot_name])
+	#Inv full - do nothing
+	else:
+		pass
 		
+	#item_node.queue_free()
+	
+	
+	
+
+func _add_to_inventory(item_id,quantity,item_node,slot_name):
+	item_node.queue_free()
+	var slot_index = int(slot_name.lstrip("Inv"))
+	if slot_index < 9:
+		Toolbar.update_inventory_slot(slot_name)
+	else:
+		Inventory.update_inventory_slot(slot_name)
+	
+

@@ -21,25 +21,23 @@ func make_action(angle):
 	hand_pivot.get_child(0).swing()
 	
 func select_item(new_item_inv_index):
-	print("selected item index",new_item_inv_index)
 	var item_id = PlayerData.inv_data["Inv"+str(new_item_inv_index)]["Item"]
 	if hand_pivot.get_child_count() > 0:
 		print("delete hand child")
 		hand_pivot.get_child(0).queue_free()
 	
-	if item_id:
-		var item_details = GameData.item_data[str(item_id)]
-		match item_details["Category"]:
-			"Melee Weapon":
+	if item_id != null and GameData.item_data[str(item_id)]["Category"] == "Weapon":
+		match GameData.item_data[str(item_id)]["Type"]:
+			"Melee":
 				var new_hand_instance = melee_weapon_scene.instance()
-				new_hand_instance.get_node("Hinge/Sprite").texture = load("res://Assets/Items_Icons/" + item_details["Name"] + ".png")
+				new_hand_instance.get_node("Hinge/Sprite").texture = load("res://Assets/Items_Icons/" + GameData.item_data[str(item_id)]["Name"] + ".png")
 				new_hand_instance.get_node("AnimationPlayer").playback_speed = 2.0
 				print("add hand weapon")
 				hand_pivot.add_child(new_hand_instance)
 				
 			_:
 				var new_hand_instance = carried_item_scene.instance()
-				new_hand_instance.get_node("Hinge/Sprite").texture = load("res://Assets/Items_Icons/" + item_details["Name"] + ".png")
+				new_hand_instance.get_node("Hinge/Sprite").texture = load("res://Assets/Items_Icons/" + GameData.item_data[str(item_id)]["Name"] + ".png")
 				print("add hand carried")
 				hand_pivot.add_child(new_hand_instance)
 	else:

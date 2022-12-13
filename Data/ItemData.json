@@ -1,33 +1,35 @@
 {
-	"10000": {
+    "10000": {
         "Name": "Gold Coin",
         "Category": "Valuables",
         "Type": "Money",
-		"Value": 1
+        "Value": 1
     },
     "10001": {
         "Name": "Blacksteel Sword",
-        "Category": "Melee Weapon",
-        "Type": "Sword",
+        "Category": "Weapon",
+        "Type": "Melee",
         "EquipmentSlot": null,
         "Attack": 20,
         "Defense": null,
         "Block": null,
         "PotionHealth": null,
         "PotionMana": null,
-        "FoodSatiation": null
+        "FoodSatiation": null,
+        "Stackable": false
     },
     "10002": {
         "Name": "Swan Blade",
-        "Category": "Melee Weapon",
-        "Type": "Sword",
+        "Category": "Weapon",
+        "Type": "Melee",
         "EquipmentSlot": null,
         "Attack": 60,
         "Defense": null,
         "Block": null,
         "PotionHealth": null,
         "PotionMana": null,
-        "FoodSatiation": null
+        "FoodSatiation": null,
+        "Stackable": false
     },
     "10003": {
         "Name": "Leather Pants",
@@ -39,7 +41,8 @@
         "Block": null,
         "PotionHealth": null,
         "PotionMana": null,
-        "FoodSatiation": null
+        "FoodSatiation": null,
+        "Stackable": false
     },
     "10004": {
         "Name": "Small Health Potion",
@@ -51,6 +54,33 @@
         "Block": null,
         "PotionHealth": 25,
         "PotionMana": null,
-        "FoodSatiation": null
+        "FoodSatiation": null,
+        "Stackable": true
+    },
+    "10005": {
+        "Name": "Hazel Bow",
+        "Category": "Weapon",
+        "Type": "Potion",
+        "EquipmentSlot": null,
+        "Attack": null,
+        "Defense": null,
+        "Block": null,
+        "PotionHealth": 25,
+        "PotionMana": null,
+        "FoodSatiation": null,
+        "Stackable": true
+    },
+    "10006": {
+        "Name": "Small Health Potion",
+        "Category": "Consumables",
+        "Type": "Potion",
+        "EquipmentSlot": null,
+        "Attack": null,
+        "Defense": null,
+        "Block": null,
+        "PotionHealth": 25,
+        "PotionMana": null,
+        "FoodSatiation": null,
+        "Stackable": true
     }
 }
