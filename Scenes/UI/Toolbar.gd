@@ -2,8 +2,6 @@ extends InvenoryHandler
 
 onready var toolbar_container = $SlotsContainer
 
-# tool range 1 - 8
-var selected_tool = 1
 
 func _ready():
 	if PlayerData.inv_data:	

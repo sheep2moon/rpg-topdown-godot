@@ -21,8 +21,7 @@ var player_xp = 0
 func _ready():
 	current_hp = hp
 
-
-func _process(delta):
+func get_input():
 	mov_direction = Vector2.ZERO
 	if Input.is_action_pressed("move_left"):
 		mov_direction = Vector2(-1,0)
@@ -32,8 +31,22 @@ func _process(delta):
 		mov_direction = Vector2(0,-1)
 	if Input.is_action_pressed("move_down"):
 		mov_direction = Vector2(0,1)
-	if Input.is_action_just_pressed("attack"):
-		attack()
+	main_hand.get_node("HandPivot").get_child(0).get_input()
+
+
+func _process(delta):
+	
+	#if Input.is_action_pressed("move_left"):
+	#	mov_direction = Vector2(-1,0)
+	#if Input.is_action_pressed("move_right"):
+	#	mov_direction = Vector2(1,0)
+	#if Input.is_action_pressed("move_up"):
+	#	mov_direction = Vector2(0,-1)
+	#if Input.is_action_pressed("move_down"):
+	#	mov_direction = Vector2(0,1)
+	#if Input.is_action_just_pressed("attack"):
+	#	main_hand.make_action(get_angle_to(get_global_mouse_position()))
+
 		
 	var mouse_direction: Vector2 = (get_global_mouse_position() - global_position).normalized()
 	
@@ -57,8 +70,6 @@ func regen_hp(delta):
 	if current_hp < hp:
 		current_hp += hp_regen * delta
 
-func attack():
-	main_hand.make_action(get_angle_to(get_global_mouse_position()))
 
 func on_kill(expierience):
 	var exp_label: Position2D = EXP_LABEL.instance()

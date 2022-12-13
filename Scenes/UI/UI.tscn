@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Resources/MenuPixelFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Resources/UpHeavt.tres" type="DynamicFont" id=2]
@@ -25,6 +25,11 @@
 [ext_resource path="res://Assets/Ui/EquipmentItems/ring.png" type="Texture" id=23]
 [ext_resource path="res://Assets/Ui/EquipmentItems/Accessory.png" type="Texture" id=24]
 [ext_resource path="res://Assets/Ui/EquipmentItems/Head.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Fonts/upheavtt.ttf" type="DynamicFontData" id=26]
+
+[sub_resource type="DynamicFont" id=12]
+size = 18
+font_data = ExtResource( 26 )
 
 [sub_resource type="Gradient" id=9]
 colors = PoolColorArray( 0, 0, 0, 0.117647, 0, 0, 0, 0.113725 )
@@ -33,7 +38,7 @@ colors = PoolColorArray( 0, 0, 0, 0.117647, 0, 0, 0, 0.113725 )
 gradient = SubResource( 9 )
 
 [sub_resource type="DynamicFont" id=10]
-size = 21
+size = 12
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=11]
@@ -59,10 +64,11 @@ rect_min_size = Vector2( 0, 30 )
 [node name="HBoxContainer" type="HBoxContainer" parent="TopBar"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_bottom = -15.0
 
 [node name="HealthBar" type="TextureProgress" parent="TopBar/HBoxContainer"]
-margin_right = 375.0
-margin_bottom = 30.0
+margin_right = 281.0
+margin_bottom = 15.0
 hint_tooltip = "Player Health"
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -74,15 +80,15 @@ nine_patch_stretch = true
 [node name="Tween" type="Tween" parent="TopBar/HBoxContainer/HealthBar"]
 
 [node name="Center" type="Control" parent="TopBar/HBoxContainer"]
-margin_left = 379.0
-margin_right = 891.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 512, 0 )
+margin_left = 285.0
+margin_right = 345.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 60, 0 )
 
 [node name="ManaBar" type="TextureProgress" parent="TopBar/HBoxContainer"]
-margin_left = 895.0
-margin_right = 1270.0
-margin_bottom = 30.0
+margin_left = 349.0
+margin_right = 630.0
+margin_bottom = 15.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 value = 60.0
@@ -98,17 +104,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="CharacterSheet" type="Control" parent="Character"]
-visible = false
-anchor_bottom = 1.0
-margin_right = 81.0
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -180.0
+margin_bottom = 180.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource( 17 )
 
 [node name="M" type="MarginContainer" parent="Character/CharacterSheet"]
-anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -720.0
 margin_right = 80.0
+margin_bottom = 360.0
 rect_min_size = Vector2( 64, 0 )
+rect_scale = Vector2( 0.5, 0.5 )
+size_flags_vertical = 2
 custom_constants/margin_right = 8
 custom_constants/margin_top = 30
 custom_constants/margin_left = 8
@@ -259,68 +269,79 @@ texture = ExtResource( 24 )
 stretch_mode = 5
 script = ExtResource( 5 )
 
+[node name="StackLabel" type="Label" parent="Character/CharacterSheet/M/LeftEquip/Accessory"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -24.0
+margin_right = -9.0
+margin_bottom = -6.0
+custom_fonts/font = SubResource( 12 )
+align = 2
+
 [node name="Toolbar" type="Control" parent="Character"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 0
-rect_min_size = Vector2( 0, 74 )
+rect_min_size = Vector2( 0, 32 )
 script = ExtResource( 18 )
 
 [node name="SlotsContainer" type="HBoxContainer" parent="Character/Toolbar"]
+anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = -32.0
 rect_min_size = Vector2( 64, 0 )
 custom_constants/separation = 1
 alignment = 1
 
 [node name="Inventory" type="Control" parent="Character"]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -160.0
-margin_top = -125.0
-margin_right = 160.0
-margin_bottom = 235.0
+margin_left = -120.0
+margin_top = -81.5
+margin_right = 120.0
+margin_bottom = 81.5
 script = ExtResource( 4 )
 
 [node name="Background" type="NinePatchRect" parent="Character/Inventory"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 12 )
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
 
 [node name="M" type="MarginContainer" parent="Character/Inventory/Background"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/margin_right = 18
-custom_constants/margin_top = 18
-custom_constants/margin_left = 18
-custom_constants/margin_bottom = 12
+custom_constants/margin_right = 2
+custom_constants/margin_top = 0
+custom_constants/margin_left = 2
+custom_constants/margin_bottom = 2
 
 [node name="V" type="VBoxContainer" parent="Character/Inventory/Background/M"]
-margin_left = 18.0
-margin_top = 18.0
-margin_right = 302.0
-margin_bottom = 348.0
+margin_left = 2.0
+margin_right = 238.0
+margin_bottom = 161.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Header" type="HBoxContainer" parent="Character/Inventory/Background/M/V"]
-margin_right = 284.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 0, 40 )
-
-[node name="Control" type="Control" parent="Character/Inventory/Background/M/V/Header"]
-margin_right = 78.0
-margin_bottom = 40.0
-size_flags_horizontal = 3
+margin_right = 236.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 0, 25 )
 
 [node name="TextureRect" type="TextureRect" parent="Character/Inventory/Background/M/V/Header"]
-margin_left = 82.0
-margin_right = 202.0
-margin_bottom = 40.0
-rect_min_size = Vector2( 120, 0 )
+margin_right = 207.0
+margin_bottom = 25.0
 size_flags_horizontal = 3
 texture = SubResource( 2 )
 expand = true
@@ -329,40 +350,28 @@ stretch_mode = 1
 [node name="Label" type="Label" parent="Character/Inventory/Background/M/V/Header/TextureRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 2.0
-margin_right = 2.0
 custom_fonts/font = SubResource( 10 )
 text = "Inventory"
 align = 1
 valign = 1
 
 [node name="Exit" type="Control" parent="Character/Inventory/Background/M/V/Header"]
-margin_left = 206.0
-margin_right = 284.0
-margin_bottom = 40.0
-size_flags_horizontal = 3
+margin_left = 211.0
+margin_right = 236.0
+margin_bottom = 25.0
+rect_min_size = Vector2( 25, 25 )
 
 [node name="CloseInventory" type="TextureButton" parent="Character/Inventory/Background/M/V/Header/Exit"]
-anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -40.0
-margin_top = 4.0
-margin_right = -4.0
-margin_bottom = 40.0
+anchor_bottom = 1.0
 size_flags_horizontal = 3
 texture_normal = ExtResource( 14 )
 texture_hover = ExtResource( 11 )
 expand = true
 
 [node name="Label" type="Label" parent="Character/Inventory/Background/M/V/Header/Exit/CloseInventory"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -18.0
-margin_top = -18.0
-margin_right = 18.0
-margin_bottom = 18.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 custom_colors/font_color = Color( 0.439216, 0.423529, 0.643137, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 2 )
@@ -370,20 +379,15 @@ text = "X"
 align = 1
 valign = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Character/Inventory/Background/M/V"]
-margin_top = 44.0
-margin_right = 284.0
-margin_bottom = 330.0
-size_flags_vertical = 3
-
-[node name="GridContainer" type="GridContainer" parent="Character/Inventory/Background/M/V/ScrollContainer"]
-margin_right = 284.0
-margin_bottom = 286.0
+[node name="GridContainer" type="GridContainer" parent="Character/Inventory/Background/M/V"]
+margin_top = 29.0
+margin_right = 236.0
+margin_bottom = 161.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_constants/vseparation = 4
-custom_constants/hseparation = 4
-columns = 4
+custom_constants/vseparation = 2
+custom_constants/hseparation = 2
+columns = 7
 
 [node name="GameMenu" type="Control" parent="."]
 visible = false

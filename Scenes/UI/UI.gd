@@ -75,6 +75,7 @@ func _on_player_enter_pickup_item(item_id,quantity,item_node):
 func _add_to_inventory(item_id,quantity,item_node,slot_name):
 	item_node.queue_free()
 	var slot_index = int(slot_name.lstrip("Inv"))
+	print(slot_name)
 	if slot_index < 9:
 		Toolbar.update_inventory_slot(slot_name)
 	else:

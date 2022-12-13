@@ -114,6 +114,7 @@ tracks/5/keys = {
 }
 
 [node name="Melee_Weapon" type="Node2D"]
+visible = false
 position = Vector2( 0, -15 )
 script = ExtResource( 2 )
 
@@ -132,9 +133,7 @@ position = Vector2( 1.11778, 1.15603 )
 collision_layer = 8
 collision_mask = 0
 script = ExtResource( 3 )
-damage = 10
-knockback_power = 1000
-knockback_direction = Vector2( 2, 2 )
+knockback_power = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hinge/Sprite/Hitbox"]
 position = Vector2( -1.26651, 1.90779 )

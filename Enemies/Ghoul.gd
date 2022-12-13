@@ -8,6 +8,6 @@ func _ready():
 		},
 		"10003":{
 			"quantity": [1,1],
-			"chance": 0.05
+			"chance": 0.4
 		}
 	}

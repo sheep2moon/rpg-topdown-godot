@@ -19,15 +19,16 @@ func _state_logic(delta):
 	#print(parent.velocity)
 	match state:
 		states.idle:
-			pass
+			parent.get_input()
 		states.move:
-			pass
+			parent.get_input()
 
 
 func _get_transition(delta):
 	match state:
 		states.idle:
 			if abs(parent._velocity.x) > 1 or abs(parent._velocity.y) > 1:
+				
 				return states.move
 		states.move:
 			if abs(parent._velocity.x) < 1 and abs(parent._velocity.y) < 1:

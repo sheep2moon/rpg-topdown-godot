@@ -33,20 +33,31 @@ func save():
 
 
 func add_to_inventory(item_id,quantity):
-	# adding to first free slot
+	print("Add to inv")
+	print(item_id,quantity)
 	var new_item_slot = null
-	for i in inv_data.keys():
+	
+	# If item is stackable looking for same item in inventory
+	if GameData.item_data[item_id]["Stackable"]:
+		for i in inv_data.keys():
 		# Merge with existing
-		if inv_data[i]["Item"] == item_id and GameData.item_data[item_id]["Stackable"]:
-			inv_data[i]["Stack"] = quantity + inv_data[i]["Stack"]
-			new_item_slot = i
-		# Add to empty slot
-		elif inv_data[i]["Item"] == null:
-			inv_data[i] = {"Item": str(item_id),"Stack": quantity }
-			new_item_slot = i
-		if new_item_slot != null:
-			var slot_index = int(i.lstrip("Inv"))
-			if slot_index == selected_tool:
-				SignalBus.emit_signal("on_selected_item_change",slot_index)
-			return i
+			if inv_data[i]["Item"] == item_id:
+				inv_data[i]["Stack"] = quantity + inv_data[i]["Stack"]
+				new_item_slot = i
+				break
+	# If not stackable, looking for first empty slot
+	elif new_item_slot == null:
+		for i in inv_data.keys():
+			if inv_data[i]["Item"] == null:
+				inv_data[i] = {"Item": str(item_id),"Stack": quantity }
+				new_item_slot = i
+				break
+				
+	# If found place for item, return slot name and update slot
+	if new_item_slot != null:
+		var slot_index = int(new_item_slot.lstrip("Inv"))
+		if slot_index == selected_tool:
+			SignalBus.emit_signal("on_selected_item_change",slot_index)
+		return new_item_slot
+	# No empty slot
 	return false

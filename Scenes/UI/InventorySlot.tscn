@@ -10,9 +10,9 @@ size = 18
 font_data = ExtResource( 4 )
 
 [node name="Inv1" type="TextureRect"]
-margin_right = 48.0
-margin_bottom = 48.0
-rect_min_size = Vector2( 64, 64 )
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
 texture = ExtResource( 1 )
 expand = true
 

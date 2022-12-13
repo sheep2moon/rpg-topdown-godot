@@ -1,15 +1,31 @@
 extends TextureRect
 
+func _ready():
+	SignalBus.connect("on_equipment_item_change",self,"_On_Equipment_Item_Change")
+
+func _On_Equipment_Item_Change(slot_name) -> void:
+	# FOR NOW UPDATE ONLY STACK SIZE
+	if slot_name == get_parent().get_name():
+		var stack_size = PlayerData.equipment_data[slot_name]["Stack"]
+		if stack_size == null:
+			texture = load("res://Assets/Ui/EquipmentItems/" + slot_name + ".png")
+			get_parent().get_node("StackLabel").set_text("")
+		else:
+			get_parent().get_node("StackLabel").set_text(str(stack_size))
+		#var item_id = PlayerData.equipment_data[slot_name]["Item"]
+		#texture = load("res://Assets/Items_Icons/"+ GameData.item_data[item_id]["Name"] +".png")
+		
+		
 func get_drag_data(_pos):
 	var equipment_slot = get_parent().get_name()
-	if PlayerData.equipment_data[equipment_slot] != null:
+	if PlayerData.equipment_data[equipment_slot]["Item"] != null:
 		var data = {}
 		data["origin_node"] = self
 		data["origin_panel"] = "CharacterSheet"
-		data["origin_item_id"] = PlayerData.equipment_data[equipment_slot]
+		data["origin_item_id"] = PlayerData.equipment_data[equipment_slot]["Item"]
 		data["origin_equipment_slot"] = equipment_slot
-		data["origin_stackable"] = false
-		data["origin_stack"] = 1
+		data["origin_stackable"] = equipment_slot == "Accessory"
+		data["origin_stack"] =  PlayerData.equipment_data[equipment_slot]["Stack"]
 		data["origin_texture"] = texture
 		
 		
@@ -27,12 +43,14 @@ func get_drag_data(_pos):
 func can_drop_data(_pos, data):
 	var target_equipment_slot = get_parent().get_name()
 	if target_equipment_slot == data["origin_equipment_slot"]:
-		if PlayerData.equipment_data[target_equipment_slot] == null:
+		if PlayerData.equipment_data[target_equipment_slot]["Item"] == null:
 			data["target_item_id"] = null
 			data["target_texture"] = null
+			data["target_stack"] = null
 		else:
-			data["target_item_id"] = PlayerData.equipment_data[target_equipment_slot]
+			data["target_item_id"] = PlayerData.equipment_data[target_equipment_slot]["Item"]
 			data["target_texture"] = texture			
+			data["target_stack"] = PlayerData.equipment_data[target_equipment_slot]["Stack"]
 		return true
 	else:
 		return false
@@ -44,6 +62,11 @@ func drop_data(_pos, data):
 	
 	if data["origin_panel"] == "Inventory":
 		PlayerData.inv_data[origin_slot]["Item"] = data["target_item_id"]
+		# this applies only to accessory slot (ammunition)
+		if data["origin_stackable"] and data["target_stack"] != null:
+			data["origin_node"].get_parent().get_node("StackLabel").set_text(data["target_stack"])
+		else:
+			data["origin_node"].get_parent().get_node("StackLabel").set_text("")
 	else:
 		PlayerData.equipment_data[origin_slot] = data["target_item_id"]
 
@@ -56,11 +79,12 @@ func drop_data(_pos, data):
 	else:
 		data["origin_node"].texture = data["target_texture"]
 		
-	PlayerData.equipment_data[target_equipment_slot] = data["origin_item_id"]
+	PlayerData.equipment_data[target_equipment_slot]["Item"] = data["origin_item_id"]
+	if data["origin_stackable"]:
+		get_parent().get_node("StackLabel").set_text(str(data["origin_stack"]))
+		PlayerData.equipment_data[target_equipment_slot]["Stack"] = data["origin_stack"]
 	texture = data["origin_texture"]
-	var inv_slot_index = int(origin_slot.lstrip("Inv"))
-	if inv_slot_index < 9:
-		SignalBus.emit_signal("on_selected_item_change",inv_slot_index)
+	SignalBus.emit_signal("on_selected_item_change",PlayerData.selected_tool)
 		
 		
 		

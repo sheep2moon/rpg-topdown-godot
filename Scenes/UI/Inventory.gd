@@ -1,7 +1,7 @@
 extends InvenoryHandler
 
 
-onready var grid_container = $Background/M/V/ScrollContainer/GridContainer
+onready var grid_container = $Background/M/V/GridContainer
 
 
 func _ready():

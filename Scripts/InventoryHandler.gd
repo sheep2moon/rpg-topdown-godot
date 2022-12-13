@@ -19,8 +19,7 @@ func update_slot(slot_name,container):
 	var item_name = GameData.item_data[str(PlayerData.inv_data[slot_name]["Item"])]["Name"]
 	var item_stack = PlayerData.inv_data[slot_name]["Stack"]
 	var icon_texture = load("res://Assets/Items_Icons/" + item_name + ".png")
-	var inv_slot_index = int(slot_name.lstrip("Inv"))
-	container.get_child(inv_slot_index-1).get_node("Icon").set_texture(icon_texture)
+	container.get_node(slot_name).get_node("Icon").set_texture(icon_texture)
 	if item_stack > 1:
-		container.get_child(inv_slot_index-1).get_node("StackLabel").set_text(str(item_stack))
+		container.get_node(slot_name).get_node("StackLabel").set_text(str(item_stack))
 
