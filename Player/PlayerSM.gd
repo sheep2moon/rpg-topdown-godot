@@ -41,9 +41,11 @@ func _get_transition(delta):
 func _enter_state(new_state,old_state):
 	match state:
 		states.idle:
-			animation_player.play("idle")
+			pass
+			#animation_player.play("idle")
 		states.move:
-			animation_player.play("move")
+			pass
+			#animation_player.play("move")
 
 		
 	

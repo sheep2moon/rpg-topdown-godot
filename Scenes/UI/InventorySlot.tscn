@@ -6,7 +6,7 @@
 [ext_resource path="res://Assets/Fonts/upheavtt.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="DynamicFont" id=1]
-size = 18
+size = 10
 font_data = ExtResource( 4 )
 
 [node name="Inv1" type="TextureRect"]
@@ -39,9 +39,11 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -40.0
+margin_left = -31.0
 margin_top = -22.0
-margin_right = -9.0
+margin_right = -4.0
+margin_bottom = -3.0
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
 align = 2
+valign = 2
