@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/GreenWoodsTiles.png-9c4d2d7b2d0b70b93ae808c9815c053f.stex"
+path="res://.import/GreenWoodsTiles.png-7441f7217d8af194f27625dd41d2a624.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tilesets/GreenWoodsTiles.png"
-dest_files=[ "res://.import/GreenWoodsTiles.png-9c4d2d7b2d0b70b93ae808c9815c053f.stex" ]
+source_file="res://Assets/GreenWoodsTiles.png"
+dest_files=[ "res://.import/GreenWoodsTiles.png-7441f7217d8af194f27625dd41d2a624.stex" ]
 
 [params]
 

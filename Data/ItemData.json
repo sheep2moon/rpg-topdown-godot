@@ -1,23 +1,64 @@
 {
-    "10000": {
+    "1000": {
         "Name": "Gold Coin",
         "Category": "Valuables",
         "Type": "Money",
         "Value": 1
     },
-    "10001": {
-        "Name": "Blacksteel Sword",
-        "Category": "Weapon",
-        "Type": "Melee",
+    "2001": {
+        "Name": "Stone Fragment",
+        "Category": "Resources",
+        "Type": "Material",
         "EquipmentSlot": null,
-        "Attack": 4,
+        "Stackable": true
+    },
+    "9001": {
+        "Name": "Iron Pickaxe",
+        "Category": "Tool",
+        "Type": "Pickaxe",
+        "EquipmentSlot": null,
+        "Attack": 2,
         "AttackSpeed": 2.0,
         "Defense": null,
         "Block": null,
         "PotionHealth": null,
         "PotionMana": null,
         "FoodSatiation": null,
-        "Stackable": false
+        "Stackable": false,
+        "PickPower": 10,
+        "AxePower": 1
+    },
+    "9002": {
+        "Name": "Iron Axe",
+        "Category": "Tool",
+        "Type": "Axe",
+        "EquipmentSlot": null,
+        "Attack": 5,
+        "AttackSpeed": 2.0,
+        "Defense": null,
+        "Block": null,
+        "PotionHealth": null,
+        "PotionMana": null,
+        "FoodSatiation": null,
+        "Stackable": false,
+        "PickPower": 1,
+        "AxePower": 10
+    },
+    "10001": {
+        "Name": "Blacksteel Sword",
+        "Category": "Weapon",
+        "Type": "Melee",
+        "EquipmentSlot": null,
+        "Attack": 20,
+        "AttackSpeed": 2.0,
+        "Defense": null,
+        "Block": null,
+        "PotionHealth": null,
+        "PotionMana": null,
+        "FoodSatiation": null,
+        "Stackable": false,
+        "PickPower": 1,
+        "AxePower": 2
     },
     "10002": {
         "Name": "Swan Blade",
@@ -31,7 +72,9 @@
         "PotionHealth": null,
         "PotionMana": null,
         "FoodSatiation": null,
-        "Stackable": false
+        "Stackable": false,
+        "PickPower": 1,
+        "AxePower": 2
     },
     "10003": {
         "Name": "Leather Pants",

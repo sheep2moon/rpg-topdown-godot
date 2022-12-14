@@ -5,8 +5,11 @@ export var texture: Texture
 export var quantity: int = 1
 
 func _ready():
+	$Tween.interpolate_property(self,"global_position",global_position,Vector2(global_position.x + rand_range(-15,15),global_position.y + rand_range(-15,15)),0.5,Tween.TRANS_CUBIC,Tween.EASE_OUT)
+	$Tween.start()
 	if texture:
 		$Sprite.texture = texture
+
 
 
 func init(_itemId,_texture,_position,_quantity):

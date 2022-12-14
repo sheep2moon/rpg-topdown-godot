@@ -4,8 +4,15 @@ var inv_data = {}
 var equipment_data = {}
 var inv_size = 28
 var selected_tool = 1
+var hp = 100
+var energy = 100
+var current_hp
+var current_energy
 
 func _ready():
+	current_hp = hp
+	current_energy = energy
+	
 	var inv_data_file = File.new()
 	inv_data_file.open("user://inv_data_file.json",File.READ)
 	var inv_data_json = JSON.parse(inv_data_file.get_as_text())
@@ -46,7 +53,7 @@ func add_to_inventory(item_id,quantity):
 				new_item_slot = i
 				break
 	# If not stackable, looking for first empty slot
-	elif new_item_slot == null:
+	if new_item_slot == null:
 		for i in inv_data.keys():
 			if inv_data[i]["Item"] == null:
 				inv_data[i] = {"Item": str(item_id),"Stack": quantity }

@@ -122,8 +122,7 @@ script = ExtResource( 2 )
 rotation = 0.174533
 
 [node name="Sprite" type="Sprite" parent="Hinge"]
-position = Vector2( 13, -11 )
-rotation = 0.1309
+position = Vector2( 9.61735, -8.80379 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 4 )
 flip_h = true

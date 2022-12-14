@@ -12,3 +12,5 @@ func _init():
 func _on_area_entered(area: Area2D):
 	if area.has_method("take_damage"):
 		area.take_damage(damage,knockback_direction,knockback_power)
+	if area.has_method("mine"):
+		area.mine()

@@ -63,13 +63,16 @@ tracks/2/keys = {
 }
 
 [node name="Carried_Item" type="Node2D"]
+visible = false
 script = ExtResource( 1 )
 
 [node name="Hinge" type="Node2D" parent="."]
+rotation = 1.39626
 
 [node name="Sprite" type="Sprite" parent="Hinge"]
 visible = false
 position = Vector2( 8, -8 )
+rotation = 1.0472
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 3 )
 

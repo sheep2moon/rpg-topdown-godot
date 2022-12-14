@@ -19,9 +19,9 @@ func _state_logic(delta):
 	#print(parent.velocity)
 	match state:
 		states.idle:
-			parent.get_input()
+			parent.get_input(delta)
 		states.move:
-			parent.get_input()
+			parent.get_input(delta)
 
 
 func _get_transition(delta):

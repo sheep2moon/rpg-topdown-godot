@@ -53,7 +53,7 @@ func _enter_state(new_state,old_state):
 			$"../Collision".set_deferred("disabled",true)
 			$"../Hurtbox/HurtShape".set_deferred("disabled",true)
 			$"../Hitbox/CollisionShape2D".set_deferred("disabled",true)
-			$"../Sprite".z_index = -3
+			$"../Sprite".z_index = -1
 			yield(get_tree().create_timer(60.0),"timeout")
 			parent.queue_free()
 		states.attack:

@@ -149,7 +149,7 @@ radius = 4.0
 height = 14.0
 
 [node name="Ghoul" type="KinematicBody2D"]
-scale = Vector2( 2, 2 )
+scale = Vector2( 1.4, 1.4 )
 script = ExtResource( 1 )
 life = 20
 

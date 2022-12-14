@@ -49,6 +49,7 @@ tracks/2/keys = {
 }
 
 [node name="BareHands" type="Node2D"]
+position = Vector2( 0, -17 )
 script = ExtResource( 2 )
 
 [node name="Hinge" type="Node2D" parent="."]

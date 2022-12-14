@@ -9,9 +9,9 @@ onready var parent = get_parent()
 
 func take_damage(dmg,direction,force):
 	
-	if parent.current_hp and parent._velocity:
+	if PlayerData.current_hp and parent._velocity:
 		SignalBus.emit_signal("shake_camera")
-		parent.current_hp -= dmg
+		PlayerData.current_hp -= dmg
 		parent._velocity += direction * force
 		var hit_effect: Sprite = HIT_EFFECT.instance()
 		var dmg_label: Position2D = DMG_LABEL.instance()

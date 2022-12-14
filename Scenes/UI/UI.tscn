@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://Resources/MenuPixelFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Resources/UpHeavt.tres" type="DynamicFont" id=2]
@@ -26,6 +26,7 @@
 [ext_resource path="res://Assets/Ui/EquipmentItems/Accessory.png" type="Texture" id=24]
 [ext_resource path="res://Assets/Ui/EquipmentItems/Head.png" type="Texture" id=25]
 [ext_resource path="res://Assets/Fonts/upheavtt.ttf" type="DynamicFontData" id=26]
+[ext_resource path="res://Scenes/Animations/Rain.tscn" type="PackedScene" id=27]
 
 [sub_resource type="DynamicFont" id=12]
 size = 18
@@ -85,7 +86,7 @@ margin_right = 345.0
 margin_bottom = 15.0
 rect_min_size = Vector2( 60, 0 )
 
-[node name="ManaBar" type="TextureProgress" parent="TopBar/HBoxContainer"]
+[node name="EnergyBar" type="TextureProgress" parent="TopBar/HBoxContainer"]
 margin_left = 349.0
 margin_right = 630.0
 margin_bottom = 15.0
@@ -97,13 +98,14 @@ texture_progress = ExtResource( 8 )
 fill_mode = 1
 nine_patch_stretch = true
 
-[node name="Tween" type="Tween" parent="TopBar/HBoxContainer/ManaBar"]
+[node name="Tween" type="Tween" parent="TopBar/HBoxContainer/EnergyBar"]
 
 [node name="Character" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="CharacterSheet" type="Control" parent="Character"]
+visible = false
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_top = -180.0
@@ -550,6 +552,9 @@ margin_bottom = 40.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="OptionsMenu/HBoxContainer"]
 margin_bottom = 40.0
+
+[node name="Rain" parent="." instance=ExtResource( 27 )]
+visible = false
 
 [connection signal="pressed" from="Character/Inventory/Background/M/V/Header/Exit/CloseInventory" to="." method="_on_CloseInventory_pressed"]
 [connection signal="pressed" from="GameMenu/MarginContainer/VBoxContainer/Resume" to="." method="_on_Resume_pressed"]

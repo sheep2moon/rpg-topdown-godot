@@ -12,11 +12,13 @@ onready var MainMenu = $GameMenu
 
 onready var health_bar = $TopBar/HBoxContainer/HealthBar
 onready var health_bar_tween = $TopBar/HBoxContainer/HealthBar/Tween
-onready var mana_bar = $TopBar/HBoxContainer/ManaBar
-onready var mana_bar_tween = $TopBar/HBoxContainer/ManaBar/Tween
+onready var energy_bar = $TopBar/HBoxContainer/EnergyBar
+onready var energy_bar_tween = $TopBar/HBoxContainer/EnergyBar/Tween
 
 func _ready():
-	health_bar.max_value = player.hp
+	health_bar.max_value = PlayerData.hp
+	energy_bar.max_value = PlayerData.energy
+	
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	SignalBus.connect("on_player_enter_pickup_item",self,"_on_player_enter_pickup_item")
 	#health_bar.value = player.current_hp
@@ -36,8 +38,10 @@ func _process(delta):
 	update_bars()
 
 func update_bars():
-	health_bar_tween.interpolate_property(health_bar,"value",health_bar.value,player.current_hp,0.1,Tween.TRANS_LINEAR,Tween.EASE_OUT)
+	health_bar_tween.interpolate_property(health_bar,"value",health_bar.value,PlayerData.current_hp,0.1,Tween.TRANS_LINEAR,Tween.EASE_OUT)
 	health_bar_tween.start()
+	energy_bar_tween.interpolate_property(energy_bar,"value",energy_bar.value,PlayerData.current_energy,0.1,Tween.TRANS_LINEAR,Tween.EASE_OUT)
+	energy_bar_tween.start()
 
 func _on_Options_pressed():
 	print("options")
@@ -57,9 +61,10 @@ func _on_Save_pressed():
 
 func _on_player_enter_pickup_item(item_id,quantity,item_node):
 	var slot_name = PlayerData.add_to_inventory(item_id,quantity)
+	print(slot_name)
 	if slot_name:
 		var item_tween: Tween = item_node.get_node("Tween")
-		item_tween.follow_property(item_node,"global_position",item_node.global_position,player,"global_position",0.5,Tween.TRANS_BACK,Tween.EASE_IN_OUT)
+		item_tween.follow_property(item_node,"global_position",item_node.global_position,player,"global_position",0.5,Tween.TRANS_CUBIC,Tween.EASE_IN_OUT)
 		#item_tween.interpolate_property(item_node,"global_position",item_node.global_position,player.global_position,2.0,Tween.TRANS_BACK,Tween.EASE_IN_OUT)
 		item_tween.start()
 		item_tween.connect("tween_all_completed",self,"_add_to_inventory",[item_id,quantity,item_node,slot_name])

@@ -1,18 +1,18 @@
 extends MainHandFist
 
-var ready_for_attack := true
+var ready_for_use := true
+var tool_type: String
 onready var hitbox = $Hinge/Sprite/Hitbox
 
 
 
+
 func on_animation_ended(anim_name):
-	print(anim_name)
 	if anim_name == "Swing":
-		ready_for_attack = true
+		ready_for_use = true
 	
 func take_main_action():
-	if ready_for_attack:
-		ready_for_attack = false
+	if ready_for_use:
+		ready_for_use = false
 		move()
-		hitbox.knockback_direction = get_mouse_direction()
 		animation_player.play("Swing")

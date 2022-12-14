@@ -35,7 +35,7 @@ func return_spawn():
 	go_to_target()
 
 func should_chase():
-	return _player.position.distance_to(global_position) < 200
+	return _player.position.distance_to(global_position) <= 300
 
 func can_attack():
 	return _player.position.distance_to(global_position) < 30

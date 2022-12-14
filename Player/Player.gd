@@ -10,18 +10,19 @@ onready var main_hand = $MainHand
 onready var player_sprite = $Sprite
 onready var _animations = $AnimationPlayer
 
-var hp = 100
-var current_hp
+
 var accerelation = 100
 var max_speed = 120
-var hp_regen = 2
+var hp_regen = 1
+var energy_regen = 2
 var level = 1
 var player_xp = 0
+var current_hand_scene: String
 
 func _ready():
-	current_hp = hp
+	pass
 
-func get_input():
+func get_input(delta):
 	mov_direction = Vector2.ZERO
 	if Input.is_action_pressed("move_left"):
 		mov_direction += Vector2(-1,0)
@@ -31,23 +32,27 @@ func get_input():
 		mov_direction += Vector2(0,-1)
 	if Input.is_action_pressed("move_down"):
 		mov_direction += Vector2(0,1)
-	main_hand.get_node("HandPivot").get_child(0).get_input()
+		
+	if Input.is_action_pressed("sprint"):
+		max_speed = 160
+		PlayerData.current_energy -= 5 * delta
+	if Input.is_action_just_released("sprint"):
+		max_speed = 120
+		
+	#for i in range(main_hand.get_node("HandPivot").get_child_count()):
+	if current_hand_scene:
+		main_hand.get_node("HandPivot").get_node(current_hand_scene).get_input()
 
 
 func _process(delta):
-		
 	var mouse_direction: Vector2 = (get_global_mouse_position() - global_position).normalized()
 	
-	#if mouse_direction.x > 0 and player_sprite.flip_h:
-	#	player_sprite.flip_h = false
-	#elif mouse_direction.x < 0 and not player_sprite.flip_h:
-	#	player_sprite.flip_h = true
-
+	
 		
 
 func _physics_process(delta):
 	regen_hp(delta)
-	
+	regen_energy(delta)
 	mov_direction = mov_direction.normalized()
 	if mov_direction == Vector2.ZERO:
 		$AnimationTree.get("parameters/playback").travel("Idle")
@@ -62,9 +67,12 @@ func _physics_process(delta):
 	
 
 func regen_hp(delta):
-	if current_hp < hp:
-		current_hp += hp_regen * delta
+	if PlayerData.current_hp < PlayerData.hp:
+		PlayerData.current_hp += hp_regen * delta
 
+func regen_energy(delta):
+	if PlayerData.current_energy < PlayerData.energy:
+		PlayerData.current_energy += energy_regen * delta
 
 func on_kill(expierience):
 	var exp_label: Position2D = EXP_LABEL.instance()
