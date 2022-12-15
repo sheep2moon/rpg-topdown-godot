@@ -123,6 +123,7 @@ radius = 15.0333
 [node name="FlyingEye" type="KinematicBody2D"]
 scale = Vector2( 0.8, 0.8 )
 script = ExtResource( 4 )
+expierience = 50
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 0
@@ -156,6 +157,7 @@ script = ExtResource( 1 )
 collision_layer = 2
 collision_mask = 0
 script = ExtResource( 2 )
+damage = 10.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2( 24, 4 )

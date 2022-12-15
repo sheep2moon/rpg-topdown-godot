@@ -115,10 +115,11 @@ tracks/5/keys = {
 
 [node name="Melee_Weapon" type="Node2D"]
 visible = false
-position = Vector2( 0, -15 )
+position = Vector2( 0, -6 )
 script = ExtResource( 2 )
 
 [node name="Hinge" type="Node2D" parent="."]
+position = Vector2( 0, -6 )
 rotation = 0.174533
 
 [node name="Sprite" type="Sprite" parent="Hinge"]

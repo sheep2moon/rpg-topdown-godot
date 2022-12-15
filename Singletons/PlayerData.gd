@@ -8,6 +8,9 @@ var hp = 100
 var energy = 100
 var current_hp
 var current_energy
+var coins = 0
+var level = 1
+var xp = 0
 
 func _ready():
 	current_hp = hp
@@ -68,3 +71,7 @@ func add_to_inventory(item_id,quantity):
 		return new_item_slot
 	# No empty slot
 	return false
+
+
+func get_next_level_xp(level):
+	return 128 * pow(level,2)

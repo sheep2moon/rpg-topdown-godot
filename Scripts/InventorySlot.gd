@@ -72,9 +72,10 @@ func drop_data(_pos, data):
 	if data["target_item_id"] == data["origin_item_id"] and data["origin_stackable"]:
 		data["origin_node"].texture = null
 		data["origin_node"].get_node("../StackLabel").set_text("")
-	elif data["origin_panel"] == "CharacterSheet" and data["target_item_id"] == null:
+	elif data["origin_panel"] == "CharacterSheet" and data["target_item_id"] == null :
 		data["origin_node"].texture = load("res://Assets/Ui/EquipmentItems/" + origin_slot + ".png")
-		data["origin_node"].get_parent().get_node("StackLabel").set_text("")
+		if data["origin_equipment_slot"] == "Accessory":
+			data["origin_node"].get_parent().get_node("StackLabel").set_text("")
 	else:
 		data["origin_node"].texture = data["target_texture"]
 		if data["target_stack"] != null and data["target_stack"] > 1:

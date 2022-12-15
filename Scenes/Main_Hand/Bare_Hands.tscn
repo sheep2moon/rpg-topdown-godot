@@ -49,11 +49,11 @@ tracks/2/keys = {
 }
 
 [node name="BareHands" type="Node2D"]
-position = Vector2( 0, -17 )
+position = Vector2( 0, -11 )
 script = ExtResource( 2 )
 
 [node name="Hinge" type="Node2D" parent="."]
-position = Vector2( 6, 0 )
+position = Vector2( 10, 0 )
 
 [node name="Sprite" type="Sprite" parent="Hinge"]
 visible = false

@@ -11,12 +11,10 @@ onready var player_sprite = $Sprite
 onready var _animations = $AnimationPlayer
 
 
-var accerelation = 100
-var max_speed = 120
+var accerelation = 50
+var max_speed = 60
 var hp_regen = 1
 var energy_regen = 2
-var level = 1
-var player_xp = 0
 var current_hand_scene: String
 
 func _ready():
@@ -37,7 +35,7 @@ func get_input(delta):
 		max_speed = 160
 		PlayerData.current_energy -= 5 * delta
 	if Input.is_action_just_released("sprint"):
-		max_speed = 120
+		max_speed = 60
 		
 	#for i in range(main_hand.get_node("HandPivot").get_child_count()):
 	if current_hand_scene:
@@ -46,6 +44,10 @@ func get_input(delta):
 
 func _process(delta):
 	var mouse_direction: Vector2 = (get_global_mouse_position() - global_position).normalized()
+	if mouse_direction.y > 0:
+		main_hand.z_index = 1
+	else:
+		main_hand.z_index = 0
 	
 	
 		
@@ -79,13 +81,11 @@ func on_kill(expierience):
 	exp_label.amount = expierience
 	exp_label.type = "Expierience"
 	add_child(exp_label)
-	player_xp += expierience
-	if player_xp >= get_next_level_xp(level):
-		level += 1
+	PlayerData.xp += expierience
+	if PlayerData.xp >= PlayerData.get_next_level_xp(PlayerData.level):
+		PlayerData.level += 1
+	SignalBus.emit_signal("on_expierience_gained")
 	
-
-func get_next_level_xp(level):
-	return 128 * pow(level,2)
 
 
 

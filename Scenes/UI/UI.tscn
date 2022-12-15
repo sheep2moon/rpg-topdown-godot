@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Resources/MenuPixelFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Resources/UpHeavt.tres" type="DynamicFont" id=2]
@@ -27,6 +27,9 @@
 [ext_resource path="res://Assets/Ui/EquipmentItems/Head.png" type="Texture" id=25]
 [ext_resource path="res://Assets/Fonts/upheavtt.ttf" type="DynamicFontData" id=26]
 [ext_resource path="res://Scenes/Animations/Rain.tscn" type="PackedScene" id=27]
+[ext_resource path="res://Assets/Ui/coin_level_fill.png" type="Texture" id=28]
+[ext_resource path="res://Assets/Ui/coin_level_empty.png" type="Texture" id=29]
+[ext_resource path="res://Assets/Ui/flat_button.png" type="Texture" id=30]
 
 [sub_resource type="DynamicFont" id=12]
 size = 18
@@ -46,6 +49,13 @@ font_data = ExtResource( 3 )
 size = 27
 use_filter = true
 font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 15
+outline_color = Color( 0.952941, 0.827451, 0.129412, 1 )
+extra_spacing_top = -2
+extra_spacing_bottom = -2
+font_data = ExtResource( 26 )
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource( 6 )
@@ -317,10 +327,10 @@ script = ExtResource( 4 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 12 )
-patch_margin_left = 1
-patch_margin_top = 1
-patch_margin_right = 1
-patch_margin_bottom = 1
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 
 [node name="M" type="MarginContainer" parent="Character/Inventory/Background"]
 anchor_right = 1.0
@@ -555,6 +565,67 @@ margin_bottom = 40.0
 
 [node name="Rain" parent="." instance=ExtResource( 27 )]
 visible = false
+
+[node name="LevelCoinsBar" type="Control" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -49.0
+margin_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 0, 48 )
+
+[node name="ExpProgress" type="TextureProgress" parent="LevelCoinsBar"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = -48.0
+margin_right = 129.0
+value = 67.0
+texture_under = ExtResource( 29 )
+texture_progress = ExtResource( 28 )
+fill_mode = 3
+nine_patch_stretch = true
+stretch_margin_top = 2
+stretch_margin_bottom = 2
+
+[node name="Coins" type="Label" parent="LevelCoinsBar"]
+margin_left = 68.0
+margin_top = 29.0
+margin_right = 124.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 56, 16 )
+custom_colors/font_color_shadow = Color( 0.34902, 0.341176, 0.211765, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "12321"
+valign = 1
+
+[node name="PlayerLevelBg" type="TextureRect" parent="LevelCoinsBar"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -304.0
+margin_top = -35.0
+margin_right = -282.0
+margin_bottom = -13.0
+rect_min_size = Vector2( 1, 0 )
+size_flags_horizontal = 5
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+texture = ExtResource( 30 )
+expand = true
+
+[node name="LevelLabel" type="Label" parent="LevelCoinsBar/PlayerLevelBg"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 13 )
+text = "23"
+align = 1
+valign = 1
+
+[node name="Tween" type="Tween" parent="LevelCoinsBar"]
 
 [connection signal="pressed" from="Character/Inventory/Background/M/V/Header/Exit/CloseInventory" to="." method="_on_CloseInventory_pressed"]
 [connection signal="pressed" from="GameMenu/MarginContainer/VBoxContainer/Resume" to="." method="_on_Resume_pressed"]

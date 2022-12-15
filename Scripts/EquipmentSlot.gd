@@ -24,8 +24,13 @@ func get_drag_data(_pos):
 		data["origin_panel"] = "CharacterSheet"
 		data["origin_item_id"] = PlayerData.equipment_data[equipment_slot]["Item"]
 		data["origin_equipment_slot"] = equipment_slot
-		data["origin_stackable"] = equipment_slot == "Accessory"
-		data["origin_stack"] =  PlayerData.equipment_data[equipment_slot]["Stack"]
+		if equipment_slot == "Accessory":
+			data["origin_stackable"] = true
+			data["origin_stack"] =  PlayerData.equipment_data[equipment_slot]["Stack"]
+		else:
+			data["origin_stackable"] = false
+			data["origin_stack"] =  1
+			
 		data["origin_texture"] = texture
 		
 		
@@ -49,8 +54,11 @@ func can_drop_data(_pos, data):
 			data["target_stack"] = null
 		else:
 			data["target_item_id"] = PlayerData.equipment_data[target_equipment_slot]["Item"]
-			data["target_texture"] = texture			
-			data["target_stack"] = PlayerData.equipment_data[target_equipment_slot]["Stack"]
+			data["target_texture"] = texture
+			if target_equipment_slot == "Accessory":
+				data["target_stack"] = PlayerData.equipment_data[target_equipment_slot]["Stack"]
+			else:
+				data["target_stack"] = 1
 		return true
 	else:
 		return false
@@ -78,7 +86,9 @@ func drop_data(_pos, data):
 		#data["origin_node"].texture = load("res://Assets/Ui/EquipmentItems/" + origin_slot + ".png")
 	else:
 		data["origin_node"].texture = data["target_texture"]
-		
+	
+	print(data["origin_item_id"])
+	print(PlayerData.equipment_data[target_equipment_slot]["Item"])
 	PlayerData.equipment_data[target_equipment_slot]["Item"] = data["origin_item_id"]
 	if data["origin_stackable"]:
 		get_parent().get_node("StackLabel").set_text(str(data["origin_stack"]))

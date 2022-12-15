@@ -2,7 +2,7 @@ extends CanvasLayer
 
 onready var player: KinematicBody2D = $"../Navigation2D/YSort/Player"
 onready var player_main_hand = $"../Navigation2D/YSort/Player/MainHand"
-
+onready var player_camera: Camera2D = $"../Navigation2D/YSort/Player/Camera2D"
 
 
 onready var Inventory = $Character/Inventory
@@ -10,6 +10,10 @@ onready var CharacterSheet = $Character/CharacterSheet
 onready var Toolbar = $Character/Toolbar
 onready var MainMenu = $GameMenu
 
+
+onready var expierience_bar = $LevelCoinsBar/ExpProgress
+onready var level_label = $LevelCoinsBar/PlayerLevelBg/LevelLabel
+onready var coins_label: Label = $LevelCoinsBar/Coins
 onready var health_bar = $TopBar/HBoxContainer/HealthBar
 onready var health_bar_tween = $TopBar/HBoxContainer/HealthBar/Tween
 onready var energy_bar = $TopBar/HBoxContainer/EnergyBar
@@ -18,9 +22,15 @@ onready var energy_bar_tween = $TopBar/HBoxContainer/EnergyBar/Tween
 func _ready():
 	health_bar.max_value = PlayerData.hp
 	energy_bar.max_value = PlayerData.energy
+
+	expierience_bar.min_value = PlayerData.get_next_level_xp(PlayerData.level - 1)
+	expierience_bar.max_value = PlayerData.get_next_level_xp(PlayerData.level)
+	expierience_bar.value = PlayerData.xp
+	level_label.set_text(str(PlayerData.level))
 	
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	SignalBus.connect("on_player_enter_pickup_item",self,"_on_player_enter_pickup_item")
+	SignalBus.connect("on_expierience_gained",self,"_on_expierience_gained")
 	#health_bar.value = player.current_hp
 
 func _input(event):
@@ -59,9 +69,29 @@ func _on_CloseInventory_pressed():
 func _on_Save_pressed():
 	PlayerData.save()
 
+
+#func get_coins_label_global_pos() -> Vector2:
+#	var on_canvas_pos = (coins_label.get_global_transform_with_canvas().origin + (coins_label.rect_size / 2)) * player_camera.zoom
+#	var camera_global_pos = player_camera.global_position - (get_viewport().size * player_camera.zoom / 2) 
+#	var abs_label_pos = camera_global_pos + on_canvas_pos
+#	print(get_viewport().size * player_camera.zoom / 2)
+#	return abs_label_pos
+	
+
+
 func _on_player_enter_pickup_item(item_id,quantity,item_node):
+	
+	if item_id == "1000":
+		var item_tween: Tween = item_node.get_node("Tween")
+		#get_coins_label_global_pos()
+		#item_tween.follow_method(item_node,"set_global_position",item_node.global_position,self,"get_coins_label_global_pos",1,Tween.TRANS_BACK,Tween.EASE_IN_OUT)
+		#item_tween.interpolate_property(item_node,"modulate:a",1.0,0.0,0.5,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT,0.5)
+		item_tween.follow_property(item_node,"global_position",item_node.global_position,player,"global_position",0.5,Tween.TRANS_CUBIC,Tween.EASE_IN_OUT)
+		item_tween.start()
+		item_tween.connect("tween_all_completed",self,"on_coin_update_score",[item_node])
+		return
+	
 	var slot_name = PlayerData.add_to_inventory(item_id,quantity)
-	print(slot_name)
 	if slot_name:
 		var item_tween: Tween = item_node.get_node("Tween")
 		item_tween.follow_property(item_node,"global_position",item_node.global_position,player,"global_position",0.5,Tween.TRANS_CUBIC,Tween.EASE_IN_OUT)
@@ -73,8 +103,10 @@ func _on_player_enter_pickup_item(item_id,quantity,item_node):
 		pass
 		
 	#item_node.queue_free()
-	
-	
+func on_coin_update_score(coin):
+	PlayerData.coins += 1
+	coins_label.set_text(str(PlayerData.coins))
+	coin.queue_free()
 	
 
 func _add_to_inventory(item_id,quantity,item_node,slot_name):
@@ -86,4 +118,12 @@ func _add_to_inventory(item_id,quantity,item_node,slot_name):
 	else:
 		Inventory.update_inventory_slot(slot_name)
 	
-
+func _on_expierience_gained():
+	var tween = expierience_bar.get_parent().get_node("Tween")
+	expierience_bar.min_value = PlayerData.get_next_level_xp(PlayerData.level - 1)
+	expierience_bar.max_value = PlayerData.get_next_level_xp(PlayerData.level)
+	print(PlayerData.xp,expierience_bar.value)
+	tween.interpolate_property(expierience_bar,"value",expierience_bar.value,PlayerData.xp,0.5,Tween.TRANS_CUBIC,Tween.EASE_OUT)
+	tween.start()
+	level_label.set_text(str(PlayerData.level))
+	

@@ -152,6 +152,7 @@ height = 14.0
 scale = Vector2( 1.4, 1.4 )
 script = ExtResource( 1 )
 life = 20
+expierience = 20
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 0

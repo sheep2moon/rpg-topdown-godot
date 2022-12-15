@@ -12,6 +12,13 @@
         "EquipmentSlot": null,
         "Stackable": true
     },
+    "2002": {
+        "Name": "Wood Log",
+        "Category": "Resources",
+        "Type": "Material",
+        "EquipmentSlot": null,
+        "Stackable": true
+    },
     "9001": {
         "Name": "Iron Pickaxe",
         "Category": "Tool",

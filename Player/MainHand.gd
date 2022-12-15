@@ -29,7 +29,7 @@ func select_item(new_item_inv_index):
 			"Melee":
 				player.current_hand_scene = "Melee_Weapon"
 				var target_node = hand_pivot.get_node("Melee_Weapon")
-				target_node.visible = true
+				#target_node.visible = true
 				target_node.get_node("Hinge/Sprite").texture = load("res://Assets/Items_Icons/" + GameData.item_data[str(item_id)]["Name"] + ".png")
 				target_node.get_node("AnimationPlayer").playback_speed = GameData.item_data[str(item_id)]["AttackSpeed"]
 				target_node.get_node("Hinge/Sprite/Hitbox").damage = float(GameData.item_data[str(item_id)]["Attack"])
@@ -44,7 +44,7 @@ func select_item(new_item_inv_index):
 	elif item_id != null and GameData.item_data[str(item_id)]["Category"] == "Tool":
 		player.current_hand_scene = "Tool"
 		var target_node = hand_pivot.get_node("Tool")
-		target_node.visible = true
+		#target_node.visible = true
 		target_node.get_node("Hinge/Sprite").texture = load("res://Assets/Items_Icons/" + GameData.item_data[str(item_id)]["Name"] + ".png")
 		target_node.get_node("AnimationPlayer").playback_speed = GameData.item_data[str(item_id)]["AttackSpeed"]
 		target_node.tool_type = GameData.item_data[str(item_id)]["Type"]

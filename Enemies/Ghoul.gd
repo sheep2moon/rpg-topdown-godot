@@ -2,7 +2,7 @@ extends Enemy
 
 func _ready():
 	loot = {
-		"10004": {
+		"1000": {
 			"quantity": [5,10],
 			"chance": 1
 		},

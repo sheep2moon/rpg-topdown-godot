@@ -617,11 +617,13 @@ frame = 1
 [node name="Particles2D" type="Particles2D" parent="Sprite"]
 position = Vector2( 0, 11 )
 emitting = false
+amount = 20
 speed_scale = 0.63
 randomness = 0.31
 process_material = SubResource( 26 )
 
 [node name="MainHand" parent="." instance=ExtResource( 1 )]
+z_index = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
