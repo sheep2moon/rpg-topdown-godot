@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/WorldResources/stone_crack.png" type="Texture" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Scripts/Rocks.gd" type="Script" id=13]
 [ext_resource path="res://Scenes/Resources/Rock.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Scenes/Resources/Tree.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Scenes/Campfire.tscn" type="PackedScene" id=16]
 
 [sub_resource type="GDScript" id=11]
 script/source = "extends Navigation2D
@@ -559,7 +560,7 @@ position = Vector2( 850, 213 )
 position = Vector2( 914, 169 )
 
 [node name="FlyingEye" parent="Navigation2D/YSort/Enemies" instance=ExtResource( 9 )]
-position = Vector2( 34, 234 )
+position = Vector2( 794, 314 )
 
 [node name="PickableItems" type="Node2D" parent="Navigation2D/YSort"]
 script = ExtResource( 10 )
@@ -578,7 +579,7 @@ format = 1
 tile_data = PoolIntArray( -589800, 3, 0, 589894, 5, 0, 589899, 10, 0, 786464, 11, 0, 786496, 5, 0, 786504, 11, 0, 786505, 4, 0, 917573, 5, 0, 1048640, 5, 0, 1114191, 10, 0, 1114193, 6, 0, 1245262, 6, 0, 1310796, 9, 0, 1376330, 11, 0, 1441865, 6, 0, 1572935, 9, 0, 1704000, 5, 0, 1769537, 11, 0, 1835082, 9, 0, 1900616, 6, 0, 1966151, 6, 0, 1966153, 6, 0, 2031686, 6, 0, 2031688, 6, 0, 2097221, 9, 0, 2097223, 8, 0, 2097224, 9, 0, 2162771, 5, 0 )
 
 [node name="Player" parent="Navigation2D/YSort" instance=ExtResource( 1 )]
-position = Vector2( 898, 513 )
+position = Vector2( 1226, 258 )
 
 [node name="Rocks" type="Node2D" parent="Navigation2D/YSort"]
 
@@ -586,31 +587,34 @@ position = Vector2( 898, 513 )
 position = Vector2( 866, 398 )
 
 [node name="Rock2" parent="Navigation2D/YSort/Rocks" instance=ExtResource( 14 )]
-position = Vector2( 1033, 375 )
+position = Vector2( 998, 382 )
 
 [node name="Rock3" parent="Navigation2D/YSort/Rocks" instance=ExtResource( 14 )]
-position = Vector2( 884, 448 )
+position = Vector2( 781, 387 )
 
 [node name="Rock4" parent="Navigation2D/YSort/Rocks" instance=ExtResource( 14 )]
-position = Vector2( 933, 403 )
+position = Vector2( 908, 274 )
 
 [node name="Rock5" parent="Navigation2D/YSort/Rocks" instance=ExtResource( 14 )]
-position = Vector2( 943, 437 )
+position = Vector2( 1093, 256 )
 
 [node name="Rock6" parent="Navigation2D/YSort/Rocks" instance=ExtResource( 14 )]
-position = Vector2( 984, 446 )
+position = Vector2( 959, 444 )
 
 [node name="Rock7" parent="Navigation2D/YSort/Rocks" instance=ExtResource( 14 )]
-position = Vector2( 947, 501 )
+position = Vector2( 807, 483 )
 
 [node name="Tree" parent="Navigation2D/YSort" instance=ExtResource( 15 )]
-position = Vector2( 1116, 352 )
+position = Vector2( 901, 391 )
 
 [node name="Tree2" parent="Navigation2D/YSort" instance=ExtResource( 15 )]
-position = Vector2( 1117, 399 )
+position = Vector2( 1074, 403 )
 
 [node name="Tree3" parent="Navigation2D/YSort" instance=ExtResource( 15 )]
 position = Vector2( 953, 276 )
+
+[node name="Campfire" parent="Navigation2D/YSort" instance=ExtResource( 16 )]
+position = Vector2( 1154, 198 )
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
 position = Vector2( -1, 14 )

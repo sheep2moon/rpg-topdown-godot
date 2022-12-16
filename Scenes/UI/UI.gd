@@ -19,6 +19,8 @@ onready var health_bar_tween = $TopBar/HBoxContainer/HealthBar/Tween
 onready var energy_bar = $TopBar/HBoxContainer/EnergyBar
 onready var energy_bar_tween = $TopBar/HBoxContainer/EnergyBar/Tween
 
+
+#Init UI values
 func _ready():
 	health_bar.max_value = PlayerData.hp
 	energy_bar.max_value = PlayerData.energy
@@ -26,6 +28,8 @@ func _ready():
 	expierience_bar.min_value = PlayerData.get_next_level_xp(PlayerData.level - 1)
 	expierience_bar.max_value = PlayerData.get_next_level_xp(PlayerData.level)
 	expierience_bar.value = PlayerData.xp
+	
+	coins_label.set_text(str(PlayerData.coins))
 	level_label.set_text(str(PlayerData.level))
 	
 	pause_mode = Node.PAUSE_MODE_PROCESS

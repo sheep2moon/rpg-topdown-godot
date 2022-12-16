@@ -8,6 +8,7 @@ func _ready():
 	$Stump.visible = false
 	$Chopped.visible = false
 	$Stroke.visible = false
+	$LeavesParticles.emitting = false
 		
 func _on_Area2D_area_entered(area):
 	if area.has_method("use_tool") and stage < 6:
@@ -21,6 +22,7 @@ func _on_Area2D_area_entered(area):
 		if stage == 6:
 			$Sprite.visible = false
 			$Stroke.visible = false
+			$LeavesParticles.emitting = false
 			$AnimationPlayer.play("Fall")
 
 

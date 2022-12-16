@@ -39,7 +39,8 @@ func take_a_shot(shot_power):
 		SignalBus.emit_signal("on_equipment_item_change","Accessory")
 		var projectile_scene = projectile.instance()
 		projectile_scene.get_node("Sprite").set_texture(load("res://Assets/Items_Icons/" + GameData.item_data[ammunition_id]["Name"] + ".png"))
-		projectile_scene.damage = float(GameData.item_data[ammunition_id]["Attack"]) * shot_power
+		var result_damage = float(GameData.item_data[ammunition_id]["Attack"]) * shot_power
+		projectile_scene.damage = stepify(result_damage,0.05)
 		projectile_scene.speed = shot_power * 50
 		var direction = projectile_start_point.global_position - global_position
 		print(direction)
