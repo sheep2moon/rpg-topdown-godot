@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Fonts/upheavtt.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=1]
+size = 12
+outline_color = Color( 0.952941, 0.827451, 0.129412, 1 )
+extra_spacing_top = -2
+extra_spacing_bottom = -2
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 12
+outline_color = Color( 0.952941, 0.827451, 0.129412, 1 )
+extra_spacing_top = -2
+extra_spacing_bottom = -2
+font_data = ExtResource( 1 )
+
+[node name="SingleMaterial" type="HBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -540.0
+margin_bottom = -330.0
+
+[node name="Icon" type="TextureRect" parent="."]
+margin_right = 15.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 15, 15 )
+expand = true
+
+[node name="NameLabel" type="Label" parent="."]
+margin_left = 19.0
+margin_top = 11.0
+margin_right = 54.0
+margin_bottom = 18.0
+size_flags_vertical = 6
+custom_fonts/font = SubResource( 1 )
+text = "stone"
+valign = 1
+
+[node name="QuantityLabel" type="Label" parent="."]
+margin_left = 58.0
+margin_top = 11.0
+margin_right = 80.0
+margin_bottom = 18.0
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "3/4"

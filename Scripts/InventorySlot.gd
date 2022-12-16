@@ -1,10 +1,9 @@
 extends TextureRect
 
-
+onready var tool_tip = preload("res://Scenes/UI/InventoryTooltip.tscn")
 onready var UI = get_node("/root/World/UI")
 
 func get_drag_data(_pos):
-	print("te")
 	var inv_slot = get_parent().get_name()
 	var current_item_id = str(PlayerData.inv_data[inv_slot]["Item"])
 	if current_item_id.is_valid_integer():
@@ -99,20 +98,5 @@ func drop_data(_pos, data):
 			get_node("../StackLabel").set_text("")
 	
 	SignalBus.emit_signal("on_selected_item_change",PlayerData.selected_tool)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

@@ -1,11 +1,13 @@
 extends CanvasLayer
 
+onready var world_node = $"../Navigation2D/YSort"
 onready var player: KinematicBody2D = $"../Navigation2D/YSort/Player"
 onready var player_main_hand = $"../Navigation2D/YSort/Player/MainHand"
 onready var player_camera: Camera2D = $"../Navigation2D/YSort/Player/Camera2D"
 
 
 onready var Inventory = $Character/Inventory
+onready var BuildMenu = $Character/BuildMenu
 onready var CharacterSheet = $Character/CharacterSheet
 onready var Toolbar = $Character/Toolbar
 onready var MainMenu = $GameMenu
@@ -35,12 +37,15 @@ func _ready():
 	pause_mode = Node.PAUSE_MODE_PROCESS
 	SignalBus.connect("on_player_enter_pickup_item",self,"_on_player_enter_pickup_item")
 	SignalBus.connect("on_expierience_gained",self,"_on_expierience_gained")
+	SignalBus.connect("on_building_menu_select",self,"_on_building_menu_select")
 	#health_bar.value = player.current_hp
 
 func _input(event):
 	if event.is_action_pressed("toggle_inventory"):
 		Inventory.visible = !Inventory.visible
 		CharacterSheet.visible = !CharacterSheet.visible
+	if event.is_action_pressed("toggle_building_menu"):
+		BuildMenu.visible = !BuildMenu.visible
 	if event.is_action_pressed("toggle_main_menu"):
 		if MainMenu.visible:
 			_on_Resume_pressed()
@@ -72,16 +77,6 @@ func _on_CloseInventory_pressed():
 
 func _on_Save_pressed():
 	PlayerData.save()
-
-
-#func get_coins_label_global_pos() -> Vector2:
-#	var on_canvas_pos = (coins_label.get_global_transform_with_canvas().origin + (coins_label.rect_size / 2)) * player_camera.zoom
-#	var camera_global_pos = player_camera.global_position - (get_viewport().size * player_camera.zoom / 2) 
-#	var abs_label_pos = camera_global_pos + on_canvas_pos
-#	print(get_viewport().size * player_camera.zoom / 2)
-#	return abs_label_pos
-	
-
 
 func _on_player_enter_pickup_item(item_id,quantity,item_node):
 	
@@ -131,3 +126,9 @@ func _on_expierience_gained():
 	tween.start()
 	level_label.set_text(str(PlayerData.level))
 	
+func _on_building_menu_select(building_name):
+	BuildMenu.visible = false
+	var building_scene = load("res://Scenes/Buildable/"+building_name+".tscn")
+	var building_instance = building_scene.instance()
+	building_instance.build_name = building_name
+	world_node.add_child(building_instance)

@@ -10,7 +10,6 @@ var main_action_speed: float = 1.0
 func get_input():
 	if Input.is_action_pressed("hand_main_action"):
 		take_main_action()
-		print("main action")
 	
 
 func _ready():

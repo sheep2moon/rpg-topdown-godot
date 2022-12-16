@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Resources/MenuPixelFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Resources/UpHeavt.tres" type="DynamicFont" id=2]
@@ -30,7 +30,8 @@
 [ext_resource path="res://Assets/Ui/coin_level_fill.png" type="Texture" id=28]
 [ext_resource path="res://Assets/Ui/coin_level_empty.png" type="Texture" id=29]
 [ext_resource path="res://Assets/Ui/flat_button.png" type="Texture" id=30]
-[ext_resource path="res://Scenes/UI/InventorySlot.tscn" type="PackedScene" id=31]
+[ext_resource path="res://Scenes/UI/CraftingRecipe.tscn" type="PackedScene" id=31]
+[ext_resource path="res://Scenes/UI/BuildMenu.gd" type="Script" id=33]
 
 [sub_resource type="DynamicFont" id=12]
 size = 18
@@ -45,6 +46,13 @@ gradient = SubResource( 9 )
 [sub_resource type="DynamicFont" id=10]
 size = 12
 font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 11
+outline_color = Color( 0.952941, 0.827451, 0.129412, 1 )
+extra_spacing_top = -2
+extra_spacing_bottom = -2
+font_data = ExtResource( 26 )
 
 [sub_resource type="DynamicFont" id=11]
 size = 27
@@ -313,6 +321,7 @@ custom_constants/separation = 1
 alignment = 1
 
 [node name="Inventory" type="Control" parent="Character"]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -407,13 +416,13 @@ size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="Character/Inventory/Background/M/V/HBoxContainer/Inv"]
 margin_right = 148.0
-margin_bottom = 11.0
+margin_bottom = 4.0
 custom_fonts/font = ExtResource( 2 )
 text = "Inventory"
 align = 1
 
 [node name="InventoryScroll" type="ScrollContainer" parent="Character/Inventory/Background/M/V/HBoxContainer/Inv"]
-margin_top = 15.0
+margin_top = 8.0
 margin_right = 148.0
 margin_bottom = 155.0
 size_flags_horizontal = 3
@@ -421,7 +430,7 @@ size_flags_vertical = 3
 
 [node name="GridContainer" type="GridContainer" parent="Character/Inventory/Background/M/V/HBoxContainer/Inv/InventoryScroll"]
 margin_right = 148.0
-margin_bottom = 140.0
+margin_bottom = 147.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/vseparation = 2
@@ -437,13 +446,13 @@ size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="Character/Inventory/Background/M/V/HBoxContainer/Craft"]
 margin_right = 84.0
-margin_bottom = 11.0
+margin_bottom = 4.0
 custom_fonts/font = ExtResource( 2 )
 text = "Craft"
 align = 1
 
 [node name="CraftingScroll" type="ScrollContainer" parent="Character/Inventory/Background/M/V/HBoxContainer/Craft"]
-margin_top = 15.0
+margin_top = 8.0
 margin_right = 84.0
 margin_bottom = 155.0
 rect_min_size = Vector2( 84, 0 )
@@ -451,46 +460,134 @@ size_flags_vertical = 3
 scroll_deadzone = 4
 
 [node name="GridContainer" type="GridContainer" parent="Character/Inventory/Background/M/V/HBoxContainer/Craft/CraftingScroll"]
-margin_right = 68.0
-margin_bottom = 140.0
+margin_right = 84.0
+margin_bottom = 147.0
+size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 2
 
-[node name="Inv1" parent="Character/Inventory/Background/M/V/HBoxContainer/Craft/CraftingScroll/GridContainer" instance=ExtResource( 31 )]
+[node name="CraftingRecipe" parent="Character/Inventory/Background/M/V/HBoxContainer/Craft/CraftingScroll/GridContainer" instance=ExtResource( 31 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 32.0
+margin_bottom = 32.0
 
-[node name="Inv2" parent="Character/Inventory/Background/M/V/HBoxContainer/Craft/CraftingScroll/GridContainer" instance=ExtResource( 31 )]
+[node name="CraftingRecipe2" parent="Character/Inventory/Background/M/V/HBoxContainer/Craft/CraftingScroll/GridContainer" instance=ExtResource( 31 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 36.0
 margin_right = 68.0
+margin_bottom = 32.0
 
-[node name="Inv4" parent="Character/Inventory/Background/M/V/HBoxContainer/Craft/CraftingScroll/GridContainer" instance=ExtResource( 31 )]
+[node name="CraftingRecipe3" parent="Character/Inventory/Background/M/V/HBoxContainer/Craft/CraftingScroll/GridContainer" instance=ExtResource( 31 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_top = 36.0
+margin_right = 32.0
 margin_bottom = 68.0
 
-[node name="Inv6" parent="Character/Inventory/Background/M/V/HBoxContainer/Craft/CraftingScroll/GridContainer" instance=ExtResource( 31 )]
+[node name="CraftingRecipe4" parent="Character/Inventory/Background/M/V/HBoxContainer/Craft/CraftingScroll/GridContainer" instance=ExtResource( 31 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 36.0
 margin_top = 36.0
 margin_right = 68.0
 margin_bottom = 68.0
 
-[node name="Inv7" parent="Character/Inventory/Background/M/V/HBoxContainer/Craft/CraftingScroll/GridContainer" instance=ExtResource( 31 )]
+[node name="CraftingRecipe5" parent="Character/Inventory/Background/M/V/HBoxContainer/Craft/CraftingScroll/GridContainer" instance=ExtResource( 31 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_top = 72.0
+margin_right = 32.0
 margin_bottom = 104.0
 
-[node name="Inv8" parent="Character/Inventory/Background/M/V/HBoxContainer/Craft/CraftingScroll/GridContainer" instance=ExtResource( 31 )]
+[node name="CraftingRecipe6" parent="Character/Inventory/Background/M/V/HBoxContainer/Craft/CraftingScroll/GridContainer" instance=ExtResource( 31 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 36.0
 margin_top = 72.0
 margin_right = 68.0
 margin_bottom = 104.0
 
-[node name="Inv9" parent="Character/Inventory/Background/M/V/HBoxContainer/Craft/CraftingScroll/GridContainer" instance=ExtResource( 31 )]
+[node name="CraftingRecipe7" parent="Character/Inventory/Background/M/V/HBoxContainer/Craft/CraftingScroll/GridContainer" instance=ExtResource( 31 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_top = 108.0
+margin_right = 32.0
 margin_bottom = 140.0
 
-[node name="Inv10" parent="Character/Inventory/Background/M/V/HBoxContainer/Craft/CraftingScroll/GridContainer" instance=ExtResource( 31 )]
+[node name="CraftingRecipe8" parent="Character/Inventory/Background/M/V/HBoxContainer/Craft/CraftingScroll/GridContainer" instance=ExtResource( 31 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
 margin_left = 36.0
 margin_top = 108.0
 margin_right = 68.0
 margin_bottom = 140.0
+
+[node name="BuildMenu" type="Control" parent="Character"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -3.0
+margin_right = -3.0
+script = ExtResource( 33 )
+
+[node name="Bg" type="NinePatchRect" parent="Character/BuildMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -150.0
+margin_top = -120.0
+margin_right = 150.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 300, 240 )
+texture = ExtResource( 12 )
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Margin" type="MarginContainer" parent="Character/BuildMenu/Bg"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 4
+custom_constants/margin_top = 2
+custom_constants/margin_left = 4
+custom_constants/margin_bottom = 2
+
+[node name="V" type="VBoxContainer" parent="Character/BuildMenu/Bg/Margin"]
+margin_left = 4.0
+margin_top = 2.0
+margin_right = 296.0
+margin_bottom = 238.0
+
+[node name="Bar" type="HBoxContainer" parent="Character/BuildMenu/Bg/Margin/V"]
+margin_right = 292.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 0, 28 )
+alignment = 1
+
+[node name="Label" type="Label" parent="Character/BuildMenu/Bg/Margin/V/Bar"]
+margin_left = 102.0
+margin_top = 10.0
+margin_right = 189.0
+margin_bottom = 17.0
+custom_fonts/font = SubResource( 14 )
+text = "Building menu"
+
+[node name="Scroll" type="ScrollContainer" parent="Character/BuildMenu/Bg/Margin/V"]
+margin_top = 32.0
+margin_right = 292.0
+margin_bottom = 236.0
+size_flags_vertical = 3
+
+[node name="Grid" type="GridContainer" parent="Character/BuildMenu/Bg/Margin/V/Scroll"]
+margin_right = 292.0
+margin_bottom = 204.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 4
 
 [node name="GameMenu" type="Control" parent="."]
 visible = false

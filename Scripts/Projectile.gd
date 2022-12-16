@@ -12,9 +12,9 @@ func _physics_process(delta):
 	if direction != Vector2.ZERO:
 		global_position += direction * speed * delta
 
-func set_direction(direction: Vector2):
-	self.direction = direction
-	rotation = direction.angle() + PI/2
+func set_direction(dir: Vector2):
+	direction = dir
+	rotation = dir.angle() + PI/2
 
 
 

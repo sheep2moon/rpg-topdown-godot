@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/Buildable/MaterialInfo/MaterialsPreview.gd" type="Script" id=1]
+
+[node name="MaterialsPreview" type="VBoxContainer"]
+anchor_right = 4.0
+anchor_bottom = 1.0
+margin_right = -2470.0
+rect_min_size = Vector2( 90, 0 )
+script = ExtResource( 1 )

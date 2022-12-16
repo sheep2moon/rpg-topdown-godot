@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Resources/UpHeavt.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Assets/Ui/crafting_frame.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/UI/BuildMenuSlot.gd" type="Script" id=3]
+
+[node name="BuildMenuSlot" type="TextureButton"]
+rect_min_size = Vector2( 64, 64 )
+texture_normal = ExtResource( 2 )
+expand = true
+stretch_mode = 4
+script = ExtResource( 3 )
+
+[node name="V" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Icon" type="TextureRect" parent="V"]
+margin_right = 64.0
+margin_bottom = 50.0
+size_flags_vertical = 3
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="V"]
+margin_top = 54.0
+margin_right = 64.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 0, 10 )
+size_flags_horizontal = 3
+custom_colors/font_color = Color( 0.282353, 0.258824, 0.396078, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "building name"
+align = 1
+
+[connection signal="pressed" from="." to="." method="_on_BuildMenuSlot_pressed"]

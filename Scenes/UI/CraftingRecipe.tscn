@@ -7,6 +7,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -608.0
 margin_bottom = -328.0
+rect_min_size = Vector2( 32, 32 )
 texture = ExtResource( 1 )
 expand = true
 

@@ -63,12 +63,6 @@ func _enter_state(new_state,old_state):
 			parent._velocity = Vector2.ZERO
 			parent._animations.play("Idle")
 		
-			
-			
-	
-func _exit_state(old_state,new_state):
-	pass
-	
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	match state:
