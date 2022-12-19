@@ -155,8 +155,8 @@ life = 20
 expierience = 20
 
 [node name="Hurtbox" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 8
+collision_layer = 8
+collision_mask = 2
 script = ExtResource( 4 )
 
 [node name="HurtShape" type="CollisionShape2D" parent="Hurtbox"]
@@ -181,8 +181,8 @@ shape = SubResource( 5 )
 
 [node name="Hitbox" type="Area2D" parent="."]
 rotation = -6.35823
-collision_layer = 2
-collision_mask = 0
+collision_layer = 8
+collision_mask = 2
 script = ExtResource( 5 )
 damage = 10
 

@@ -82,9 +82,6 @@ func _on_player_enter_pickup_item(item_id,quantity,item_node):
 	
 	if item_id == "1000":
 		var item_tween: Tween = item_node.get_node("Tween")
-		#get_coins_label_global_pos()
-		#item_tween.follow_method(item_node,"set_global_position",item_node.global_position,self,"get_coins_label_global_pos",1,Tween.TRANS_BACK,Tween.EASE_IN_OUT)
-		#item_tween.interpolate_property(item_node,"modulate:a",1.0,0.0,0.5,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT,0.5)
 		item_tween.follow_property(item_node,"global_position",item_node.global_position,player,"global_position",0.5,Tween.TRANS_CUBIC,Tween.EASE_IN_OUT)
 		item_tween.start()
 		item_tween.connect("tween_all_completed",self,"on_coin_update_score",[item_node])
@@ -121,7 +118,6 @@ func _on_expierience_gained():
 	var tween = expierience_bar.get_parent().get_node("Tween")
 	expierience_bar.min_value = PlayerData.get_next_level_xp(PlayerData.level - 1)
 	expierience_bar.max_value = PlayerData.get_next_level_xp(PlayerData.level)
-	print(PlayerData.xp,expierience_bar.value)
 	tween.interpolate_property(expierience_bar,"value",expierience_bar.value,PlayerData.xp,0.5,Tween.TRANS_CUBIC,Tween.EASE_OUT)
 	tween.start()
 	level_label.set_text(str(PlayerData.level))
@@ -131,4 +127,5 @@ func _on_building_menu_select(building_name):
 	var building_scene = load("res://Scenes/Buildable/"+building_name+".tscn")
 	var building_instance = building_scene.instance()
 	building_instance.build_name = building_name
+	#building_instance.materials = GameData.buildings_data[building_name]["Materials"]
 	world_node.add_child(building_instance)

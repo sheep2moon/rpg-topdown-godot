@@ -1,8 +1,16 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Resources/UpHeavt.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Assets/Ui/crafting_frame.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/UI/BuildMenuSlot.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Ui/info_window.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/UI/BuildItemTooltip.gd" type="Script" id=5]
+[ext_resource path="res://Assets/Fonts/editundo.ttf" type="DynamicFontData" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 12
+use_filter = true
+font_data = ExtResource( 6 )
 
 [node name="BuildMenuSlot" type="TextureButton"]
 rect_min_size = Vector2( 64, 64 )
@@ -32,5 +40,46 @@ custom_colors/font_color = Color( 0.282353, 0.258824, 0.396078, 1 )
 custom_fonts/font = ExtResource( 1 )
 text = "building name"
 align = 1
+
+[node name="Tooltip" type="Popup" parent="."]
+margin_right = 92.0
+margin_bottom = 60.0
+script = ExtResource( 5 )
+owner_path = NodePath("..")
+
+[node name="Frame" type="NinePatchRect" parent="Tooltip"]
+margin_right = 92.0
+margin_bottom = 42.0
+size_flags_vertical = 3
+texture = ExtResource( 4 )
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
+
+[node name="M" type="MarginContainer" parent="Tooltip/Frame"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 6
+custom_constants/margin_top = 6
+custom_constants/margin_left = 6
+custom_constants/margin_bottom = 6
+
+[node name="V" type="VBoxContainer" parent="Tooltip/Frame/M"]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 86.0
+margin_bottom = 36.0
+grow_vertical = 0
+rect_min_size = Vector2( 80, 0 )
+size_flags_vertical = 3
+
+[node name="NameLabel" type="Label" parent="Tooltip/Frame/M/V"]
+margin_right = 80.0
+margin_bottom = 11.0
+custom_fonts/font = SubResource( 1 )
+text = "XD"
+align = 1
+valign = 1
 
 [connection signal="pressed" from="." to="." method="_on_BuildMenuSlot_pressed"]

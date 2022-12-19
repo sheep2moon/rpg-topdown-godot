@@ -8,8 +8,8 @@ radius = 4.0
 [node name="Hitbox" type="Area2D"]
 rotation = 1.92684
 scale = Vector2( 2, 2 )
-collision_layer = 8
-collision_mask = 0
+collision_layer = 2
+collision_mask = 8
 gravity = 97.789
 script = ExtResource( 1 )
 

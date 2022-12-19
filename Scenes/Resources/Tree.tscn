@@ -63,7 +63,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.3, 0.9 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, -35 ), Vector2( 15, -31 ), Vector2( 34, -2 ) ]
+"values": [ Vector2( 0, -39 ), Vector2( 15, -31 ), Vector2( 34, -2 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Chopped:rotation_degrees")
@@ -154,6 +154,42 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Vector2( 0, -35 ) ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Chopped:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -39 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Chopped:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -1.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Chopped:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "Stroke"
@@ -196,16 +232,28 @@ tracks/2/keys = {
 "values": [ true, false ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Sprite:position")
+tracks/3/path = NodePath("Chopped:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.2, 0.35 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Chopped:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.25, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0.5, -35 ), Vector2( -1, -35 ), Vector2( 0, -35 ) ]
+"values": [ 0.0, 1.0, -1.0, 0.0 ]
 }
 
 [sub_resource type="Gradient" id=6]
@@ -246,11 +294,14 @@ hframes = 3
 frame = 2
 
 [node name="Stump" type="Sprite" parent="."]
+visible = false
 position = Vector2( -1, -7 )
 texture = ExtResource( 3 )
 
 [node name="Chopped" type="Sprite" parent="."]
-position = Vector2( 0, -35 )
+visible = false
+position = Vector2( 0, -39 )
+rotation = -0.0174533
 texture = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

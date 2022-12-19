@@ -16,10 +16,13 @@ func create_inv_slot(slot_name):
 	return inv_slot_new
 
 func update_slot(slot_name,container):
-	var item_name = GameData.item_data[str(PlayerData.inv_data[slot_name]["Item"])]["Name"]
-	var item_stack = PlayerData.inv_data[slot_name]["Stack"]
-	var icon_texture = load("res://Assets/Items_Icons/" + item_name + ".png")
-	container.get_node(slot_name).get_node("Icon").set_texture(icon_texture)
-	if item_stack > 1:
-		container.get_node(slot_name).get_node("StackLabel").set_text(str(item_stack))
-
+	if PlayerData.inv_data[slot_name]["Item"] != null:
+		var item_name = GameData.item_data[str(PlayerData.inv_data[slot_name]["Item"])]["Name"]
+		var item_stack = PlayerData.inv_data[slot_name]["Stack"]
+		var icon_texture = load("res://Assets/Items_Icons/" + item_name + ".png")
+		container.get_node(slot_name).get_node("Icon").set_texture(icon_texture)
+		if item_stack > 1:
+			container.get_node(slot_name).get_node("StackLabel").set_text(str(item_stack))
+	else:
+		container.get_node(slot_name).get_node("Icon").set_texture(null)
+		container.get_node(slot_name).get_node("StackLabel").set_text("")

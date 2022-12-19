@@ -130,8 +130,8 @@ flip_h = true
 
 [node name="Hitbox" type="Area2D" parent="Hinge/Sprite"]
 position = Vector2( 1.11778, 1.15603 )
-collision_layer = 8
-collision_mask = 0
+collision_layer = 2
+collision_mask = 8
 script = ExtResource( 3 )
 knockback_power = 100
 

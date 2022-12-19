@@ -126,8 +126,8 @@ script = ExtResource( 4 )
 expierience = 50
 
 [node name="Hurtbox" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 8
+collision_layer = 8
+collision_mask = 2
 script = ExtResource( 3 )
 
 [node name="HurtShape" type="CollisionShape2D" parent="Hurtbox"]
@@ -154,8 +154,8 @@ script = ExtResource( 1 )
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="Hitbox" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 0
+collision_layer = 8
+collision_mask = 2
 script = ExtResource( 2 )
 damage = 10.0
 

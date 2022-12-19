@@ -538,31 +538,31 @@ position = Vector2( 1226, 258 )
 [node name="Enemies" type="Node2D" parent="Navigation2D/YSort"]
 
 [node name="Ghoul" parent="Navigation2D/YSort/Enemies" instance=ExtResource( 5 )]
-position = Vector2( 766, 577 )
+position = Vector2( 440, 551 )
 
 [node name="Ghoul6" parent="Navigation2D/YSort/Enemies" instance=ExtResource( 5 )]
-position = Vector2( 766, 577 )
+position = Vector2( 429, 460 )
 
 [node name="Ghoul2" parent="Navigation2D/YSort/Enemies" instance=ExtResource( 5 )]
-position = Vector2( 706, 553 )
+position = Vector2( 555, 610 )
 
 [node name="Ghoul3" parent="Navigation2D/YSort/Enemies" instance=ExtResource( 5 )]
-position = Vector2( 820, 597 )
+position = Vector2( 637, 701 )
 
 [node name="Ghoul4" parent="Navigation2D/YSort/Enemies" instance=ExtResource( 5 )]
-position = Vector2( 698, 459 )
+position = Vector2( 459, 413 )
 
 [node name="Ghoul5" parent="Navigation2D/YSort/Enemies" instance=ExtResource( 5 )]
-position = Vector2( 716, 389 )
+position = Vector2( 469, 251 )
 
 [node name="Ghoul7" parent="Navigation2D/YSort/Enemies" instance=ExtResource( 5 )]
-position = Vector2( 850, 213 )
+position = Vector2( 621, 171 )
 
 [node name="Ghoul8" parent="Navigation2D/YSort/Enemies" instance=ExtResource( 5 )]
-position = Vector2( 914, 169 )
+position = Vector2( 713, 70 )
 
 [node name="FlyingEye" parent="Navigation2D/YSort/Enemies" instance=ExtResource( 9 )]
-position = Vector2( 794, 314 )
+position = Vector2( 557, 67 )
 
 [node name="PickableItems" type="Node2D" parent="Navigation2D/YSort"]
 script = ExtResource( 10 )
@@ -607,7 +607,7 @@ position = Vector2( 807, 483 )
 position = Vector2( 901, 391 )
 
 [node name="Tree2" parent="Navigation2D/YSort" instance=ExtResource( 15 )]
-position = Vector2( 1074, 403 )
+position = Vector2( 1306, 266 )
 
 [node name="Tree3" parent="Navigation2D/YSort" instance=ExtResource( 15 )]
 position = Vector2( 953, 276 )

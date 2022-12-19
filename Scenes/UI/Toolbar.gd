@@ -4,6 +4,7 @@ onready var toolbar_container = $SlotsContainer
 
 
 func _ready():
+	SignalBus.connect("on_user_inventory_change",self,"_on_update_inventory")
 	if PlayerData.inv_data:	
 		var inventory_keys: Array = PlayerData.inv_data.keys()
 		for i in inventory_keys.slice(0,7):
@@ -41,5 +42,10 @@ func select_tool(idx):
 func update_inventory_slot(slot_name):
 	update_slot(slot_name,toolbar_container)
 
+func _on_update_inventory():
+	var inventory_keys: Array = PlayerData.inv_data.keys()
+	for i in inventory_keys.slice(0,7):
+		if i != null:
+			update_slot(i,toolbar_container)
 
 

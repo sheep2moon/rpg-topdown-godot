@@ -1,4 +1,5 @@
 extends Popup
+class_name Tooltip
 
 var origin = ""
 var slot = ""
@@ -17,32 +18,32 @@ func _ready():
 
 func _physics_process(delta):
 	if visible:
-		var border = get_viewport().size
-		print(border)
-		print(get_viewport_rect().size)
-		print(get_viewport().get_mouse_position())
-		print(get_global_transform_with_canvas().origin)
+		#var border = get_viewport().size
+		#print(border)
+		#print(get_viewport_rect().size)
+		#print(get_viewport().get_mouse_position())
+		#print(get_global_transform_with_canvas().origin)
 		
 		if get_viewport().get_mouse_position().y > get_viewport_rect().size.y - rect_size.y:
 			rect_global_position = get_global_mouse_position() + Vector2(2,- rect_size.y - 2)
 		else:
 			rect_global_position = get_global_mouse_position() + Vector2(2,2)
-			print("below")
+
 		
-		
-	
 
 func _on_mouse_entered():
 	_timer.start(delay)
 	
 
 func _on_mouse_exited():
-	print("mouse exited ?? ? ?? ? ")
-	_timer.stop()
-	hide()
+	custom_hide()
 
 func _on_timout():
 	custom_show()
+
+func custom_hide():
+	_timer.stop()
+	hide()
 	
 func custom_show():
 	_timer.stop()

@@ -1,6 +1,6 @@
 extends TextureRect
 
-onready var tool_tip = preload("res://Scenes/UI/InventoryTooltip.tscn")
+#onready var tool_tip = preload("res://Scenes/UI/InventoryTooltip.tscn")
 onready var UI = get_node("/root/World/UI")
 
 func get_drag_data(_pos):
