@@ -3,8 +3,10 @@ class_name Tooltip
 
 var origin = ""
 var slot = ""
+var disabled = false
 export var owner_path: NodePath
 export var delay: float = 0.5
+
 
 var _timer: Timer
 onready var owner_node = get_node(owner_path)
@@ -32,7 +34,8 @@ func _physics_process(delta):
 		
 
 func _on_mouse_entered():
-	_timer.start(delay)
+	if not disabled:
+		_timer.start(delay)
 	
 
 func _on_mouse_exited():

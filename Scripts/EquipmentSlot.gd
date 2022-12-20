@@ -94,7 +94,8 @@ func drop_data(_pos, data):
 		get_parent().get_node("StackLabel").set_text(str(data["origin_stack"]))
 		PlayerData.equipment_data[target_equipment_slot]["Stack"] = data["origin_stack"]
 	texture = data["origin_texture"]
-	SignalBus.emit_signal("on_selected_item_change",PlayerData.selected_tool)
+	
+	SignalBus.emit_signal("on_inventory_order_change")
 		
 		
 		

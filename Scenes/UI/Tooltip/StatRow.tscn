@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Resources/UpHeavt.tres" type="DynamicFont" id=1]
+
+[node name="H" type="HBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -560.0
+margin_bottom = -344.0
+
+[node name="Icon" type="TextureRect" parent="."]
+margin_right = 16.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+expand = true
+
+[node name="Name" type="Label" parent="."]
+margin_left = 20.0
+margin_right = 60.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 0, 16 )
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+valign = 1
+autowrap = true
+
+[node name="Value" type="Label" parent="."]
+margin_left = 64.0
+margin_right = 80.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 16, 16 )
+custom_fonts/font = ExtResource( 1 )
+valign = 1

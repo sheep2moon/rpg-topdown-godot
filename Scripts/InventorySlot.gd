@@ -25,6 +25,7 @@ func get_drag_data(_pos):
 		control.add_child(drag_texture)
 		drag_texture.rect_position = -0.5 * drag_texture.rect_size
 		
+		
 		set_drag_preview(control)
 		
 		return data
@@ -97,6 +98,8 @@ func drop_data(_pos, data):
 		else:
 			get_node("../StackLabel").set_text("")
 	
-	SignalBus.emit_signal("on_selected_item_change",PlayerData.selected_tool)
+	data["origin_node"].get_parent().get_node("InventoryTooltip").update_content()
+	get_parent().get_node("InventoryTooltip").update_content()
+	SignalBus.emit_signal("on_inventory_order_change")
 
 

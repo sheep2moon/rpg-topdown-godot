@@ -24,7 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Icon" type="TextureRect" parent="V"]
-margin_right = 64.0
+margin_right = 77.0
 margin_bottom = 50.0
 size_flags_vertical = 3
 expand = true
@@ -32,7 +32,7 @@ stretch_mode = 6
 
 [node name="Label" type="Label" parent="V"]
 margin_top = 54.0
-margin_right = 64.0
+margin_right = 77.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 0, 10 )
 size_flags_horizontal = 3

@@ -1,20 +1,20 @@
 [gd_scene load_steps=33 format=2]
 
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Assets/WorldResources/stone_crack.png" type="Texture" id=2]
-[ext_resource path="res://Scenes/UI/UI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Assets/WorldResources/stone_crack.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/ProjectilesManager.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Rocks.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/Grass.gd" type="Script" id=4]
-[ext_resource path="res://Enemies/Ghoul.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Scripts/ProjectilesManager.gd" type="Script" id=6]
-[ext_resource path="res://Scenes/PickableItem.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Assets/Items_Icons/Small Health Potion.png" type="Texture" id=8]
-[ext_resource path="res://Enemies/FlyingEye.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Scripts/ManagePickableItems.gd" type="Script" id=10]
-[ext_resource path="res://Assets/Tileset.png" type="Texture" id=11]
-[ext_resource path="res://Assets/Decorations.png" type="Texture" id=12]
-[ext_resource path="res://Scripts/Rocks.gd" type="Script" id=13]
-[ext_resource path="res://Scenes/Resources/Rock.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Scenes/Resources/Tree.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Scripts/ManagePickableItems.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/UI/UI.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scenes/Resources/Rock.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/PickableItem.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Enemies/Ghoul.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Enemies/FlyingEye.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/Resources/Tree.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Assets/Items_Icons/Small Health Potion.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Decorations.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Tileset.png" type="Texture" id=15]
 
 [sub_resource type="GDScript" id=11]
 script/source = "extends Navigation2D
@@ -55,7 +55,7 @@ points = PoolVector2Array( 13.326, 16.73, 41.838, 16.298, 43.998, 23.534, 35.898
 
 [sub_resource type="TileSet" id=35]
 0/name = "Decorations.png 0"
-0/texture = ExtResource( 12 )
+0/texture = ExtResource( 14 )
 0/tex_offset = Vector2( 0, -64 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 208, 160, 48, 80 )
@@ -76,7 +76,7 @@ points = PoolVector2Array( 13.326, 16.73, 41.838, 16.298, 43.998, 23.534, 35.898
 } ]
 0/z_index = 0
 1/name = "Decorations.png 1"
-1/texture = ExtResource( 12 )
+1/texture = ExtResource( 14 )
 1/tex_offset = Vector2( 0, 64 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 160, 160, 48, 80 )
@@ -97,7 +97,7 @@ points = PoolVector2Array( 13.326, 16.73, 41.838, 16.298, 43.998, 23.534, 35.898
 } ]
 1/z_index = 0
 2/name = "Decorations.png 2"
-2/texture = ExtResource( 12 )
+2/texture = ExtResource( 14 )
 2/tex_offset = Vector2( 0, -96 )
 2/modulate = Color( 1, 1, 1, 1 )
 2/region = Rect2( 82, 128, 80, 112 )
@@ -118,7 +118,7 @@ points = PoolVector2Array( 13.326, 16.73, 41.838, 16.298, 43.998, 23.534, 35.898
 } ]
 2/z_index = 0
 3/name = "Decorations.png 3"
-3/texture = ExtResource( 12 )
+3/texture = ExtResource( 14 )
 3/tex_offset = Vector2( 0, -96 )
 3/modulate = Color( 1, 1, 1, 1 )
 3/region = Rect2( 2, 128, 80, 112 )
@@ -139,7 +139,7 @@ points = PoolVector2Array( 13.326, 16.73, 41.838, 16.298, 43.998, 23.534, 35.898
 } ]
 3/z_index = 0
 4/name = "Decorations.png 4"
-4/texture = ExtResource( 12 )
+4/texture = ExtResource( 14 )
 4/tex_offset = Vector2( 0, -16 )
 4/modulate = Color( 1, 1, 1, 1 )
 4/region = Rect2( 66, 0, 64, 32 )
@@ -160,7 +160,7 @@ points = PoolVector2Array( 13.326, 16.73, 41.838, 16.298, 43.998, 23.534, 35.898
 } ]
 4/z_index = 0
 5/name = "Decorations.png 5"
-5/texture = ExtResource( 12 )
+5/texture = ExtResource( 14 )
 5/tex_offset = Vector2( 0, -16 )
 5/modulate = Color( 1, 1, 1, 1 )
 5/region = Rect2( 2, 0, 48, 32 )
@@ -181,7 +181,7 @@ points = PoolVector2Array( 13.326, 16.73, 41.838, 16.298, 43.998, 23.534, 35.898
 } ]
 5/z_index = 0
 6/name = "Decorations.png 6"
-6/texture = ExtResource( 12 )
+6/texture = ExtResource( 14 )
 6/tex_offset = Vector2( 0, 0 )
 6/modulate = Color( 1, 1, 1, 1 )
 6/region = Rect2( 98, 64, 32, 32 )
@@ -195,7 +195,7 @@ points = PoolVector2Array( 13.326, 16.73, 41.838, 16.298, 43.998, 23.534, 35.898
 6/shapes = [  ]
 6/z_index = 0
 7/name = "Decorations.png 7"
-7/texture = ExtResource( 12 )
+7/texture = ExtResource( 14 )
 7/tex_offset = Vector2( 0, 0 )
 7/modulate = Color( 1, 1, 1, 1 )
 7/region = Rect2( 98, 96, 32, 32 )
@@ -209,7 +209,7 @@ points = PoolVector2Array( 13.326, 16.73, 41.838, 16.298, 43.998, 23.534, 35.898
 7/shapes = [  ]
 7/z_index = 0
 8/name = "Decorations.png 8"
-8/texture = ExtResource( 12 )
+8/texture = ExtResource( 14 )
 8/tex_offset = Vector2( 0, 0 )
 8/modulate = Color( 1, 1, 1, 1 )
 8/region = Rect2( 66, 64, 32, 32 )
@@ -223,7 +223,7 @@ points = PoolVector2Array( 13.326, 16.73, 41.838, 16.298, 43.998, 23.534, 35.898
 8/shapes = [  ]
 8/z_index = 0
 9/name = "Decorations.png 9"
-9/texture = ExtResource( 12 )
+9/texture = ExtResource( 14 )
 9/tex_offset = Vector2( 0, 0 )
 9/modulate = Color( 1, 1, 1, 1 )
 9/region = Rect2( 2, 64, 32, 32 )
@@ -237,7 +237,7 @@ points = PoolVector2Array( 13.326, 16.73, 41.838, 16.298, 43.998, 23.534, 35.898
 9/shapes = [  ]
 9/z_index = 0
 10/name = "Decorations.png 10"
-10/texture = ExtResource( 12 )
+10/texture = ExtResource( 14 )
 10/tex_offset = Vector2( 0, 0 )
 10/modulate = Color( 1, 1, 1, 1 )
 10/region = Rect2( 34, 64, 32, 32 )
@@ -251,7 +251,7 @@ points = PoolVector2Array( 13.326, 16.73, 41.838, 16.298, 43.998, 23.534, 35.898
 10/shapes = [  ]
 10/z_index = 0
 11/name = "Decorations.png 11"
-11/texture = ExtResource( 12 )
+11/texture = ExtResource( 14 )
 11/tex_offset = Vector2( 0, 0 )
 11/modulate = Color( 1, 1, 1, 1 )
 11/region = Rect2( 162, 96, 32, 32 )
@@ -272,7 +272,7 @@ outlines = [ PoolVector2Array( -66, -113, -61, 862, 970, 895, 1021, 485, 1439, 1
 
 [sub_resource type="TileSet" id=36]
 0/name = "Tileset.png 0"
-0/texture = ExtResource( 11 )
+0/texture = ExtResource( 15 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 0, 96, 48 )
@@ -295,7 +295,7 @@ outlines = [ PoolVector2Array( -66, -113, -61, 862, 970, 895, 1021, 485, 1439, 1
 0/shapes = [  ]
 0/z_index = 0
 1/name = "Tileset.png 1"
-1/texture = ExtResource( 11 )
+1/texture = ExtResource( 15 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 0, 160, 128, 48 )
@@ -318,7 +318,7 @@ outlines = [ PoolVector2Array( -66, -113, -61, 862, 970, 895, 1021, 485, 1439, 1
 1/shapes = [  ]
 1/z_index = 0
 2/name = "Tileset.png 2"
-2/texture = ExtResource( 11 )
+2/texture = ExtResource( 15 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
 2/region = Rect2( 16, 16, 16, 16 )
@@ -334,7 +334,7 @@ outlines = [ PoolVector2Array( -66, -113, -61, 862, 970, 895, 1021, 485, 1439, 1
 
 [sub_resource type="TileSet" id=37]
 0/name = "Tileset.png 0"
-0/texture = ExtResource( 11 )
+0/texture = ExtResource( 15 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 96, 0, 32, 48 )
@@ -355,7 +355,7 @@ outlines = [ PoolVector2Array( -66, -113, -61, 862, 970, 895, 1021, 485, 1439, 1
 0/shapes = [  ]
 0/z_index = 0
 1/name = "Tileset.png 1"
-1/texture = ExtResource( 11 )
+1/texture = ExtResource( 15 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 16, 16, 16, 16 )
@@ -371,7 +371,7 @@ outlines = [ PoolVector2Array( -66, -113, -61, 862, 970, 895, 1021, 485, 1439, 1
 
 [sub_resource type="TileSet" id=39]
 0/name = "Tileset.png 0"
-0/texture = ExtResource( 11 )
+0/texture = ExtResource( 15 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 0, 160, 128, 48 )
@@ -394,7 +394,7 @@ outlines = [ PoolVector2Array( -66, -113, -61, 862, 970, 895, 1021, 485, 1439, 1
 0/shapes = [  ]
 0/z_index = 0
 1/name = "Tileset.png 1"
-1/texture = ExtResource( 11 )
+1/texture = ExtResource( 15 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 98, 208, 32, 32 )
@@ -429,7 +429,7 @@ points = PoolVector2Array( 18.4682, 2.62411, 27.3603, 12.8143, 26.841, 20.6678, 
 
 [sub_resource type="TileSet" id=48]
 0/name = "stone_crack.png 0"
-0/texture = ExtResource( 2 )
+0/texture = ExtResource( 1 )
 0/tex_offset = Vector2( 0, 0 )
 0/modulate = Color( 1, 1, 1, 1 )
 0/region = Rect2( 2, 0, 32, 32 )
@@ -450,7 +450,7 @@ points = PoolVector2Array( 18.4682, 2.62411, 27.3603, 12.8143, 26.841, 20.6678, 
 } ]
 0/z_index = 0
 1/name = "stone_crack.png 1"
-1/texture = ExtResource( 2 )
+1/texture = ExtResource( 1 )
 1/tex_offset = Vector2( 0, 0 )
 1/modulate = Color( 1, 1, 1, 1 )
 1/region = Rect2( 34, 0, 32, 32 )
@@ -471,7 +471,7 @@ points = PoolVector2Array( 18.4682, 2.62411, 27.3603, 12.8143, 26.841, 20.6678, 
 } ]
 1/z_index = 0
 2/name = "stone_crack.png 2"
-2/texture = ExtResource( 2 )
+2/texture = ExtResource( 1 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
 2/region = Rect2( 66, 0, 32, 32 )
@@ -492,7 +492,7 @@ points = PoolVector2Array( 18.4682, 2.62411, 27.3603, 12.8143, 26.841, 20.6678, 
 } ]
 2/z_index = 0
 3/name = "stone_crack.png 3"
-3/texture = ExtResource( 2 )
+3/texture = ExtResource( 1 )
 3/tex_offset = Vector2( 0, 0 )
 3/modulate = Color( 1, 1, 1, 1 )
 3/region = Rect2( 98, 0, 32, 32 )
@@ -518,7 +518,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="UI" parent="." instance=ExtResource( 3 )]
+[node name="UI" parent="." instance=ExtResource( 6 )]
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 script = SubResource( 11 )
@@ -532,45 +532,45 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Player" parent="Navigation2D/YSort" instance=ExtResource( 1 )]
+[node name="Player" parent="Navigation2D/YSort" instance=ExtResource( 7 )]
 position = Vector2( 1226, 258 )
 
 [node name="Enemies" type="Node2D" parent="Navigation2D/YSort"]
 
-[node name="Ghoul" parent="Navigation2D/YSort/Enemies" instance=ExtResource( 5 )]
+[node name="Ghoul" parent="Navigation2D/YSort/Enemies" instance=ExtResource( 10 )]
 position = Vector2( 440, 551 )
 
-[node name="Ghoul6" parent="Navigation2D/YSort/Enemies" instance=ExtResource( 5 )]
+[node name="Ghoul6" parent="Navigation2D/YSort/Enemies" instance=ExtResource( 10 )]
 position = Vector2( 429, 460 )
 
-[node name="Ghoul2" parent="Navigation2D/YSort/Enemies" instance=ExtResource( 5 )]
+[node name="Ghoul2" parent="Navigation2D/YSort/Enemies" instance=ExtResource( 10 )]
 position = Vector2( 555, 610 )
 
-[node name="Ghoul3" parent="Navigation2D/YSort/Enemies" instance=ExtResource( 5 )]
+[node name="Ghoul3" parent="Navigation2D/YSort/Enemies" instance=ExtResource( 10 )]
 position = Vector2( 637, 701 )
 
-[node name="Ghoul4" parent="Navigation2D/YSort/Enemies" instance=ExtResource( 5 )]
+[node name="Ghoul4" parent="Navigation2D/YSort/Enemies" instance=ExtResource( 10 )]
 position = Vector2( 459, 413 )
 
-[node name="Ghoul5" parent="Navigation2D/YSort/Enemies" instance=ExtResource( 5 )]
+[node name="Ghoul5" parent="Navigation2D/YSort/Enemies" instance=ExtResource( 10 )]
 position = Vector2( 469, 251 )
 
-[node name="Ghoul7" parent="Navigation2D/YSort/Enemies" instance=ExtResource( 5 )]
+[node name="Ghoul7" parent="Navigation2D/YSort/Enemies" instance=ExtResource( 10 )]
 position = Vector2( 621, 171 )
 
-[node name="Ghoul8" parent="Navigation2D/YSort/Enemies" instance=ExtResource( 5 )]
+[node name="Ghoul8" parent="Navigation2D/YSort/Enemies" instance=ExtResource( 10 )]
 position = Vector2( 713, 70 )
 
-[node name="FlyingEye" parent="Navigation2D/YSort/Enemies" instance=ExtResource( 9 )]
+[node name="FlyingEye" parent="Navigation2D/YSort/Enemies" instance=ExtResource( 11 )]
 position = Vector2( 557, 67 )
 
 [node name="PickableItems" type="Node2D" parent="Navigation2D/YSort"]
-script = ExtResource( 10 )
+script = ExtResource( 5 )
 
-[node name="PickableItem" parent="Navigation2D/YSort/PickableItems" instance=ExtResource( 7 )]
+[node name="PickableItem" parent="Navigation2D/YSort/PickableItems" instance=ExtResource( 9 )]
 position = Vector2( 418, 194 )
 item_id = "10004"
-texture = ExtResource( 8 )
+texture = ExtResource( 13 )
 
 [node name="ForestProps" type="TileMap" parent="Navigation2D/YSort"]
 tile_set = SubResource( 35 )
@@ -582,34 +582,34 @@ tile_data = PoolIntArray( -589800, 3, 0, 589894, 5, 0, 589899, 10, 0, 786464, 11
 
 [node name="Rocks" type="Node2D" parent="Navigation2D/YSort"]
 
-[node name="Rock" parent="Navigation2D/YSort/Rocks" instance=ExtResource( 14 )]
+[node name="Rock" parent="Navigation2D/YSort/Rocks" instance=ExtResource( 8 )]
 position = Vector2( 866, 398 )
 
-[node name="Rock2" parent="Navigation2D/YSort/Rocks" instance=ExtResource( 14 )]
+[node name="Rock2" parent="Navigation2D/YSort/Rocks" instance=ExtResource( 8 )]
 position = Vector2( 998, 382 )
 
-[node name="Rock3" parent="Navigation2D/YSort/Rocks" instance=ExtResource( 14 )]
+[node name="Rock3" parent="Navigation2D/YSort/Rocks" instance=ExtResource( 8 )]
 position = Vector2( 781, 387 )
 
-[node name="Rock4" parent="Navigation2D/YSort/Rocks" instance=ExtResource( 14 )]
+[node name="Rock4" parent="Navigation2D/YSort/Rocks" instance=ExtResource( 8 )]
 position = Vector2( 908, 274 )
 
-[node name="Rock5" parent="Navigation2D/YSort/Rocks" instance=ExtResource( 14 )]
+[node name="Rock5" parent="Navigation2D/YSort/Rocks" instance=ExtResource( 8 )]
 position = Vector2( 1093, 256 )
 
-[node name="Rock6" parent="Navigation2D/YSort/Rocks" instance=ExtResource( 14 )]
+[node name="Rock6" parent="Navigation2D/YSort/Rocks" instance=ExtResource( 8 )]
 position = Vector2( 959, 444 )
 
-[node name="Rock7" parent="Navigation2D/YSort/Rocks" instance=ExtResource( 14 )]
+[node name="Rock7" parent="Navigation2D/YSort/Rocks" instance=ExtResource( 8 )]
 position = Vector2( 807, 483 )
 
-[node name="Tree" parent="Navigation2D/YSort" instance=ExtResource( 15 )]
+[node name="Tree" parent="Navigation2D/YSort" instance=ExtResource( 12 )]
 position = Vector2( 901, 391 )
 
-[node name="Tree2" parent="Navigation2D/YSort" instance=ExtResource( 15 )]
+[node name="Tree2" parent="Navigation2D/YSort" instance=ExtResource( 12 )]
 position = Vector2( 1306, 266 )
 
-[node name="Tree3" parent="Navigation2D/YSort" instance=ExtResource( 15 )]
+[node name="Tree3" parent="Navigation2D/YSort" instance=ExtResource( 12 )]
 position = Vector2( 953, 276 )
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="Navigation2D"]
@@ -648,11 +648,11 @@ tile_set = SubResource( 48 )
 cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( 917488, -1073741824, 0 )
-script = ExtResource( 13 )
+script = ExtResource( 3 )
 
 [node name="ProjectilesManager" type="Node2D" parent="."]
 z_index = 2
-script = ExtResource( 6 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }

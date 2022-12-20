@@ -12,8 +12,11 @@ onready var hand_pivot = get_node("HandPivot")
 
 func _ready():
 	select_item(1)
+	SignalBus.connect("on_inventory_order_change",self,"_on_inventory_order_change")
 	SignalBus.connect("on_selected_item_change",self,"select_item")
 	
+func _on_inventory_order_change():
+	select_item(PlayerData.selected_tool)
 
 func select_item(new_item_inv_index):
 	var item_id = PlayerData.inv_data["Inv"+str(new_item_inv_index)]["Item"]

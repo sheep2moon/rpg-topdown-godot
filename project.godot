@@ -75,7 +75,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Tudej"
-run/main_scene="res://Scenes/MainWorld.tscn"
+run/main_scene="res://Scenes/Boards/Woods.tscn"
 config/icon="res://icon.png"
 
 [autoload]

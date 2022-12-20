@@ -34,4 +34,4 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		SignalBus.emit_signal("on_drop_items",global_position,"2002",4)
 		
 func shake_camera():
-	SignalBus.emit_signal("shake_camera",0.3,6,22)
+	SignalBus.emit_signal("shake_camera",0.3,12,12)

@@ -8,6 +8,7 @@ var can_build = false
 
 func _on_BuildMenuSlot_pressed():
 	if can_build():
+		$Tooltip.custom_hide()
 		SignalBus.emit_signal("on_building_menu_select",name)
 	
 func _ready():

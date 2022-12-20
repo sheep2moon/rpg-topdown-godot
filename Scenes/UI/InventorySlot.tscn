@@ -67,10 +67,10 @@ owner_path = NodePath("..")
 delay = 0.3
 
 [node name="Frame" type="NinePatchRect" parent="InventoryTooltip"]
-modulate = Color( 1, 1, 1, 0.705882 )
+modulate = Color( 1, 1, 1, 0.784314 )
 margin_right = 70.0
 margin_bottom = 60.0
-rect_min_size = Vector2( 90, 70 )
+rect_min_size = Vector2( 92, 70 )
 texture = ExtResource( 6 )
 patch_margin_left = 6
 patch_margin_top = 6
@@ -88,30 +88,30 @@ custom_constants/margin_bottom = 6
 [node name="V" type="VBoxContainer" parent="InventoryTooltip/Frame/M"]
 margin_left = 6.0
 margin_top = 6.0
-margin_right = 84.0
+margin_right = 86.0
 margin_bottom = 64.0
 
 [node name="H" type="HBoxContainer" parent="InventoryTooltip/Frame/M/V"]
-margin_right = 78.0
-margin_bottom = 6.0
+margin_right = 80.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 20 )
 
 [node name="Icon" type="TextureRect" parent="InventoryTooltip/Frame/M/V/H"]
-margin_bottom = 6.0
+margin_bottom = 20.0
 
 [node name="NameLabel" type="Label" parent="InventoryTooltip/Frame/M/V/H"]
 margin_left = 4.0
-margin_right = 78.0
-margin_bottom = 6.0
+margin_top = 7.0
+margin_right = 80.0
+margin_bottom = 13.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 2 )
 align = 1
 valign = 1
 autowrap = true
 
-[node name="Label" type="Label" parent="InventoryTooltip/Frame/M/V"]
-margin_top = 10.0
-margin_right = 78.0
+[node name="V" type="VBoxContainer" parent="InventoryTooltip/Frame/M/V"]
+margin_top = 24.0
+margin_right = 80.0
 margin_bottom = 58.0
-text = "Item po
-po
-"
+size_flags_vertical = 3
